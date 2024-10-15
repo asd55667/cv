@@ -1,5 +1,5 @@
 import { Component } from 'solid-js';
-import { Button } from './Button';
+import { Button } from '../button/Button';
 import './header.css';
 
 type User = {

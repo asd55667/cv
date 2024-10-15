@@ -1,5 +1,5 @@
 import { Component, createSignal } from 'solid-js';
-import { Header } from './Header';
+import { Header } from '../header/Header';
 import './page.css';
 
 type User = {
