@@ -1,0 +1,18 @@
+.email {
+    width: 14px;
+    height: 10px;
+    transform: translateY(1px);
+    color: var(--highlight);
+}
+
+.icon {
+    width: 14px;
+    height: 14px;
+    color: var(--highlight);
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}

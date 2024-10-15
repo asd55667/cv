@@ -4,6 +4,7 @@ import { render } from 'solid-js/web';
 import './index.css';
 import App from './App';
 import 'virtual:uno.css'
+import 'virtual:svg-icons-register'
 
 const root = document.getElementById('root');
 
