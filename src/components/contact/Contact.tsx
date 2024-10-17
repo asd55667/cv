@@ -13,6 +13,7 @@ interface IContact {
 
 export const Contact: Component<IContact> = (props) => {
   const context = useAppState()
+  const { t } = context
   return (
     <div class={styles.contact}>
       <div class={styles.item}>
@@ -21,7 +22,7 @@ export const Contact: Component<IContact> = (props) => {
         </Show>
 
         <Show when={context.isDark}>
-          <label>Email</label>
+          <label>{t('home.email')}</label>
         </Show>
         {props.email}
       </div>
@@ -32,7 +33,7 @@ export const Contact: Component<IContact> = (props) => {
         </Show>
 
         <Show when={context.isDark}>
-          <label>Phone Number</label>
+          <label>{t('home.phone')}</label>
         </Show>
         {props.phone}
       </div>

@@ -1,59 +1,59 @@
 {
-  "name": "John Carter",
-  "position": "Product designer",
-  "id": "johncarter",
-  "email": "contact@johncarter.com",
-  "phone": "(487) 540 - 9804",
-  "site": "",
-  "intro": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dictumst sagittis nisi interdum mauris. Nulla hendrerit elementum ullamcorper rhoncus sed at. Odio ut sit tempor sit. Donec id elit feugiat cursus.",
+  "name": "john moore",
+  "position": "digital designer",
+  "id": "johnmoore",
+  "email": "contact@johnmoore.com",
+  "phone": "+1 (450) 780 9317",
+  "site": "www.johncarter.com",
+  "intro": "Lorem ipsum dolor sit amet consectetur adipiscing elit scelerisque sit senectus maecenas donec amet viverra Aliquam aenean eget gravida vitae nunc vitae sit.",
   "educations": [
     {
-      "major": "Master of Digital Arts",
+      "major": "B.S Arts in Graphic design",
       "school": "Stanford university",
-      "date": "2017 - 2022"
-    },
-    {
-      "major": "B.S of User Experience",
-      "school": "Hardvard university",
-      "date": "2013 - 2017"
-    },
-    {
-      "major": "B.S Arts in Graphic Design",
-      "school": "MIT university",
-      "date": "2009 - 2013"
+      "date": "2017 - 2020"
     },
     {
       "major": "B.S of Design",
-      "school": "MIT",
-      "date": "2006 - 2009"
+      "school": "Hardvard university",
+      "date": "2013 - 2017"
     }
   ],
-  "expertise": [],
+  "expertise": [
+    "Branding",
+    "Web Design",
+    "UI/UX Design",
+    "Web Development"
+  ],
   "skills": [
-    "UI Design",
-    "UX Design",
-    "Product Design",
-    "User Research",
-    "Design Thinking"
+    "Lead & Strategy",
+    "Innovative",
+    "Team work",
+    "Goal oriented"
   ],
   "experience": [
     {
-      "company": "FACEBOOK",
+      "company": "Facebook",
       "position": "Lead Product Designer",
-      "date": "2020 - 2021",
-      "desc": "Quis orci amet porttitor blandit amet nullam sit elit purus blandit non ut non."
+      "date": "2019 - Present",
+      "desc": "Eleifend volutpat sit eros, lobortis id lobortis placerat volutpat penatibus purus vestibulum id proin in eros a. Justo."
     },
     {
-      "company": "GOOGLE",
-      "position": "Lead Product Designer",
-      "date": "2019 - 2020",
-      "desc": "Ultrices proin elit, tellus euismod leo id volutpat cursus integer faucibus."
-    },
-    {
-      "company": "TWITTER",
+      "company": "Youtube",
       "position": "Lead Product Designer",
       "date": "2018 - 2019",
-      "desc": "Lorem ipsum dolor sit amet justo, rhoncus felis dolor sit."
+      "desc": "Ultrices proin elit, tellus euismod. Leo id volutpat cursus integer faucibus ultrices. Convallis ipsum eu adipiscing lorem."
+    },
+    {
+      "company": "Twitter",
+      "position": "Lead Product Designer",
+      "date": "2017 - 2018",
+      "desc": "Etiam commodo vulputate aliquam urna ac lacus. Sagittis arcu pulvinar ullamcorper ut. Blandit vel felis etiam."
+    },
+    {
+      "company": "Google",
+      "position": "Lead Product Designer",
+      "date": "2016 - 2017",
+      "desc": "Sed feugiat aliquam pharetra, consequat, volutpat pharetra sagittis tortor. Elementum proin arcu quisque adipiscing."
     }
   ]
 }

@@ -1,0 +1,12 @@
+{
+  "dir": "ltr",
+  "lang": "English",
+  "title": "吴承炜|简历",
+  "locale": "zh-CN",
+  "404": {
+    "header": "Oops. Four oh four.",
+    "body": "believes this page definitely doesn't exist."
+  },
+  "dark_mode": "暗黑模式",
+  "light_mode": "明亮模式"
+}

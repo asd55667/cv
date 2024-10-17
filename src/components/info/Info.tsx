@@ -16,15 +16,15 @@ export const Info: Component = (props) => {
 
       <div class={styles.name}>
         <div>
-          <Show when={!context.isDark}><span>i’m </span></Show>
+          <Show when={!context.isDark && context.locale === 'en'}><span>i’m </span></Show>
           {cv().name}
-          <Show when={!context.isDark}><span>, </span></Show>
+          <Show when={!context.isDark && context.locale === 'en'}><span>, </span></Show>
         </div>
 
         <div>
-          <Show when={!context.isDark}><span>a </span></Show>
+          <Show when={!context.isDark && context.locale === 'en'}><span>a </span></Show>
           <span class={styles.position}>{cv().position}</span>
-          <Show when={!context.isDark}><span>.</span></Show>
+          <Show when={!context.isDark && context.locale === 'en'}><span>.</span></Show>
         </div>
       </div>
     </div>

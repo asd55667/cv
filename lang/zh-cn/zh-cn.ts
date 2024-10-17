@@ -1,12 +1,7 @@
-
+import global from './global.json';
+import home from './home.json';
 
 export const dict = {
-  // global,
-  // home,
-  // docs,
-  // media,
-  // resources,
-  // tutorial,
-  // examples,
-  // contributors,
+  global,
+  home,
 };

@@ -14,9 +14,14 @@ import { Info } from '../info/Info';
 
 export const DefaultLayout: Component = (props) => {
   const context = useAppState()
+  const { t } = context
   const cv = () => context.cv
+  const isEn = () => context.locale === 'en'
 
-  const edu = () => context.isDark ? 'Education' : 'education'
+  const edu = () => {
+    let title = t("home.education")
+    return !context.isDark ? title.toLowerCase() : title
+  }
 
   return (
     <main class={styles.page}>
@@ -35,13 +40,13 @@ export const DefaultLayout: Component = (props) => {
       <div class={styles.main}>
         <div class={styles.left}>
           <Show when={!context.isDark}>
-            <CVBlock label='contact'>
+            <CVBlock label={t('home.contact')}>
               <Contact email={cv().email} phone={cv().phone} site={cv().site} />
             </CVBlock>
           </Show>
 
           <Show when={context.isDark}>
-            <CVBlock label={`About ${cv().name}`}>
+            <CVBlock label={`${t('home.about')}${isEn() ? ' ' : ''}${cv().name}`}>
               <div class={styles.intro}>{cv().intro}</div>
             </CVBlock>
           </Show>
@@ -51,7 +56,7 @@ export const DefaultLayout: Component = (props) => {
           </CVBlock>
 
           <Show when={cv().expertise.length && !context.isDark}>
-            <CVBlock label="expertise">
+            <CVBlock label={t("home.expertise")}>
               <div class="flex flex-col justify-center gap-1">
                 <For each={cv().expertise}>
                   {(item) => (<li>{item}</li>)}
@@ -61,7 +66,7 @@ export const DefaultLayout: Component = (props) => {
           </Show>
 
           <Show when={!context.isDark}>
-            <CVBlock label="skills">
+            <CVBlock label={t('home.skill').toLowerCase()}>
               <div class="flex flex-col justify-center gap-1">
                 <For each={cv().skills}>
                   {(skill) => (
@@ -79,15 +84,15 @@ export const DefaultLayout: Component = (props) => {
 
         <div class={styles.right}>
           <Show when={!context.isDark}>
-            <CVBlock label='about me'>
+            <CVBlock label={t("home.intro")}>
               <div class={styles.intro}>{cv().intro}</div>
             </CVBlock>
           </Show>
 
           <CVBlock
             label={
-              context.isDark ? 'Work Experience' :
-                <div>work <span class='highlight'>experience</span></div>
+              context.isDark ? `${t('home.work')}${isEn() ? ' ' : ''}${t('home.experience')}` :
+                <div>{t('home.work').toLowerCase() + (isEn() ? ' ' : '')}<span class='highlight'>{t("home.experience").toLowerCase()}</span></div>
             }
           >
             <div class={styles.exprs}>
@@ -102,7 +107,7 @@ export const DefaultLayout: Component = (props) => {
           </CVBlock>
 
           <Show when={context.isDark}>
-            <CVBlock label="Skills">
+            <CVBlock label={t('home.skill')}>
               <div class="flex flex-col justify-center gap-1">
                 <For each={cv().skills}>
                   {(skill) => (
