@@ -16,10 +16,16 @@
     ],
     "noEmit": true,
     "isolatedModules": true,
+    "resolveJsonModule": true,
     "paths": {
       "@/*": [
         "./src/*"
       ],
-    }
+    },
   },
+  "include": [
+    "src/**/**.ts",
+    "src/**/**.tsx",
+    "lang/**/**.ts",
+  ],
 }

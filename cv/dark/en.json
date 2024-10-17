@@ -1,0 +1,59 @@
+{
+  "name": "John Carter",
+  "position": "Product designer",
+  "id": "johncarter",
+  "email": "contact@johncarter.com",
+  "phone": "(487) 540 - 9804",
+  "site": "",
+  "intro": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dictumst sagittis nisi interdum mauris. Nulla hendrerit elementum ullamcorper rhoncus sed at. Odio ut sit tempor sit. Donec id elit feugiat cursus.",
+  "educations": [
+    {
+      "major": "Master of Digital Arts",
+      "school": "Stanford university",
+      "date": "2017 - 2022"
+    },
+    {
+      "major": "B.S of User Experience",
+      "school": "Hardvard university",
+      "date": "2013 - 2017"
+    },
+    {
+      "major": "B.S Arts in Graphic Design",
+      "school": "MIT university",
+      "date": "2009 - 2013"
+    },
+    {
+      "major": "B.S of Design",
+      "school": "MIT",
+      "date": "2006 - 2009"
+    }
+  ],
+  "expertise": [],
+  "skills": [
+    "UI Design",
+    "UX Design",
+    "Product Design",
+    "User Research",
+    "Design Thinking"
+  ],
+  "experience": [
+    {
+      "company": "FACEBOOK",
+      "position": "Lead Product Designer",
+      "date": "2020 - 2021",
+      "desc": "Quis orci amet porttitor blandit amet nullam sit elit purus blandit non ut non."
+    },
+    {
+      "company": "GOOGLE",
+      "position": "Lead Product Designer",
+      "date": "2019 - 2020",
+      "desc": "Ultrices proin elit, tellus euismod leo id volutpat cursus integer faucibus."
+    },
+    {
+      "company": "TWITTER",
+      "position": "Lead Product Designer",
+      "date": "2018 - 2019",
+      "desc": "Lorem ipsum dolor sit amet justo, rhoncus felis dolor sit."
+    }
+  ]
+}

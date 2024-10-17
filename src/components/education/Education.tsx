@@ -1,32 +1,34 @@
 import { type Component } from 'solid-js';
 
+import { For } from 'solid-js';
+
 import styles from './education.module.css'
 
-import { LightBlock } from '../block/Block';
+import { useAppState } from '@/AppContext';
 
 interface IEducation {
-  //
+  educations: {
+    major: string;
+    school: string;
+    date: string;
+  }[]
 }
 
-
 export const Education: Component<IEducation> = (props) => {
+  const context = useAppState()
+
   return (
-    <LightBlock label="education">
-      <div class="flex flex-col justify-center gap-4 lt4">
-        <div class="flex flex-col justify-center gap-1">
-          <div class="lt2">B.S Arts in Graphic design</div>
-          <div>Stanford university</div>
+    <div class={styles.edus}>
+      <For each={props.educations}>
+        {(edu) => (
+          <div class={styles.edu}>
+            <div class={styles.major}>{edu.major}</div>
+            <div class={styles.school}>{edu.school}</div>
 
-          <div class={styles.date}>2017 - 2020</div>
-        </div>
-
-        <div class="flex flex-col justify-center gap-1">
-          <div class="lt2">B.S of Design</div>
-          <div>Hardvard University</div>
-
-          <div class={styles.date}>2013 - 2017</div>
-        </div>
-      </div>
-    </LightBlock>
+            <div class={styles.date}>{edu.date}</div>
+          </div>
+        )}
+      </For>
+    </div>
   )
 }

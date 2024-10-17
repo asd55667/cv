@@ -1,18 +1,49 @@
+.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+:global(.dark) .contact {
+  gap: 9px;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  color: rgba(255, 255, 255, 1);
+}
+
 .email {
-    width: 14px;
-    height: 10px;
-    transform: translateY(1px);
-    color: var(--highlight);
+  width: 14px;
+  height: 10px;
+  transform: translateY(1px);
+  color: var(--highlight);
 }
 
 .icon {
-    width: 14px;
-    height: 14px;
-    color: var(--highlight);
+  width: 14px;
+  height: 14px;
+  color: var(--highlight);
 }
 
 .item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+:global(.dark) .item {
+  flex-direction: column;
+  align-items: start;
+  gap: 4.5px;
+}
+
+label {
+  font-size: 9px;
+  font-weight: 400;
+  line-height: 12px;
+  letter-spacing: -0.02em;
+  color: rgba(144, 144, 144, 1);
 }

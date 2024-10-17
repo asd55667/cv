@@ -1,25 +1,36 @@
-import { type JSX, type Component } from 'solid-js';
+import { type JSX, type Component, Show } from 'solid-js';
 
 import styles from './experience.module.css'
+import { useAppState } from '@/AppContext';
 
 interface IExperience {
-    title: string
-    position: string
-    date: string
-    children: JSX.Element
+  title: string
+  position: string
+  date: string
+  children: JSX.Element
 }
 
 export const Experience: Component<IExperience> = (props) => {
-    return (
-        <div class="lt4">
-            <div class="lt3 highlight">{props.title}</div>
+  const context = useAppState()
 
-            <div class="mt-12.7px mb-2">
-                <span class="lt2  pr-6px mr-6px border-r-red">{props.position}</span>
-                <span class={styles.date}>{props.date}</span>
-            </div>
+  return (
+    <div class={styles.expr}>
+      <div class={styles.title}>
+        {props.title}
+        <Show when={context.isDark}>
+          <span class={styles.date}>{props.date}</span>
+        </Show>
+      </div>
 
-            <div>{props.children}</div>
-        </div>
-    )
+      <div class={styles.row2}>
+        <span class={styles.position}>{props.position}</span>
+
+        <Show when={!context.isDark}>
+          <span class={styles.date}>{props.date}</span>
+        </Show>
+      </div>
+
+      <div>{props.children}</div>
+    </div>
+  )
 }
