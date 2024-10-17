@@ -3,31 +3,41 @@ import html2canvas from 'html2canvas'
 
 import { onCleanup, onMount } from "solid-js";
 
-export function downloadPdf() {
-  const doc = new jsPDF();
-  // TODO:
+export function downloadPdf(download: string) {
+  generateImage().then(canvas => {
+    const imgData = canvas.toDataURL("image/png");
+    const doc = new jsPDF();
+    doc.addImage(imgData, 'PNG', 10, 10, 190, (canvas.height * 190) / canvas.width);
+    doc.save(`${download}.pdf`);
+  })
+}
+
+async function generateImage(): Promise<HTMLCanvasElement> {
+  return new Promise((resolve) => {
+    const node = document.getElementById('page')
+    if (!node) return
+    html2canvas(node, {
+      onclone: (clonedDoc) => {
+        const cv = clonedDoc.querySelector('#page')
+        if (!cv?.parentNode) return
+        // reset zoom
+        (cv.parentNode as HTMLElement).style.zoom = '1'
+
+        // repaint avatar
+        const avatar = clonedDoc.querySelector('#avatar') as HTMLDivElement
+        if (!avatar) return
+        avatar?.removeChild(avatar?.children[0])
+        const [w, h] = [avatar.clientWidth, avatar.clientHeight]
+        avatar.appendChild(drawAvatar(w, h))
+      }
+    }).then(canvas => {
+      resolve(canvas)
+    })
+  })
 }
 
 export function downloadImage(type: string, download: string) {
-  const node = document.getElementById('page')
-  if (!node) return
-  html2canvas(node, {
-    onclone: (clonedDoc) => {
-      const cv = clonedDoc.querySelector('#page')
-      if (!cv?.parentNode) return
-      // reset zoom
-      (cv.parentNode as HTMLElement).style.zoom = '1'
-
-      // repaint avatar
-      const avatar = clonedDoc.querySelector('#avatar') as HTMLDivElement
-      if (!avatar) return
-      avatar?.removeChild(avatar?.children[0])
-      const [w, h] = [avatar.clientWidth, avatar.clientHeight]
-      avatar.appendChild(drawAvatar(w, h))
-    }
-  }).then(canvas => {
-    // document.body.appendChild(canvas)
-
+  generateImage().then(canvas => {
     const link = document.createElement('a');
     link.href = canvas.toDataURL(`image/${type}`);
     link.download = download;

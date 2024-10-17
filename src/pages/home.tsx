@@ -24,8 +24,12 @@ const Home: Component = () => {
     window.print()
   }
 
-  const downloadImg = () => {
-    downloadImage('png', `${context.cv.name}-${context.locale === 'en' ? 'cv' : '简历'}.png`)
+  const download = (type: 'pdf' | 'png') => {
+    return () => {
+      const filename = `${context.cv.name}-${context.locale === 'en' ? 'cv' : '简历'}`
+      if (type === 'pdf') downloadPdf(filename)
+      if (type === 'png') downloadImage('png', filename + '.png')
+    }
   }
 
   onMount(resize)
@@ -82,8 +86,8 @@ const Home: Component = () => {
         <CVButton onClick={switchLang}>{t('global.lang')}</CVButton>
         <CVButton onClick={switchTheme}>{theme()}</CVButton>
         <CVButton onClick={printCV}>{t('global.print')}</CVButton>
-        <CVButton onClick={downloadPdf}>{t('global.pdf')}</CVButton>
-        <CVButton onClick={downloadImg}>{t('global.img')}</CVButton>
+        <CVButton onClick={download('pdf')}>{t('global.pdf')}</CVButton>
+        <CVButton onClick={download('png')}>{t('global.img')}</CVButton>
       </div>
     </div>
   );
