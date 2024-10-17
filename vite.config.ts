@@ -5,7 +5,7 @@ import solidPlugin from 'vite-plugin-solid';
 import presetWind from '@unocss/preset-wind'
 import UnoCSS from 'unocss/vite'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
-
+import { px2remPlugin } from './build/px2rem'
 
 const projectRootDir = path.resolve(__dirname);
 export default defineConfig({
@@ -34,6 +34,7 @@ export default defineConfig({
       iconDirs: [path.resolve(__dirname, 'src/assets/svg')],
       symbolId: 'icon-[dir]-[name]',
     }),
+    px2remPlugin(),
   ],
   server: {
     port: 3000,

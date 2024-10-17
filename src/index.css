@@ -23,6 +23,8 @@ code {
 
   --page-width: 595px;
   --page-height: 842px;
+
+  background-color: #e1e1e1;
 }
 
 .dark {
@@ -31,3 +33,45 @@ code {
   word-spacing: 0.4rem;
 }
 
+@media print {
+  :root {
+    font-size: 21px;
+  }
+
+  body * {
+    visibility: hidden;
+    /* Hide everything */
+  }
+
+  #page * {
+    visibility: visible;
+    /* Show only the print area */
+  }
+
+  #page {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    height: auto;
+    width: 210mm;
+    height: 297mm;
+    overflow: visible;
+  }
+
+  #__svg__icons__dom__ * {
+    visibility: visible;
+  }
+
+  #buttons * {
+    display: none;
+  }
+
+  @page {
+    size: A4;
+    /* Set page size */
+    margin: 0;
+    /* Remove default margins */
+  }
+
+}

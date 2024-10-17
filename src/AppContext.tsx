@@ -199,7 +199,7 @@ export const AppContextProvider: ParentComponent = (props) => {
       <AppContext.Provider value={state}>
         <Title>{t('global.title')}</Title>
         <Meta name="lang" content={locale()} />
-        <div dir={state.dir}>{props.children}</div>
+        <div class="center min-w-100vw min-h-100vh" dir={state.dir}>{props.children}</div>
       </AppContext.Provider>
     </Suspense>
   );
