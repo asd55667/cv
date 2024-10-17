@@ -10,7 +10,7 @@ export const Info: Component = (props) => {
 
   return (
     <div class='flex items-center justify-between gap-4'>
-      <div class={styles.avatar}>
+      <div id="avatar" class={styles.avatar}>
         <SvgIcon name='avatar'></SvgIcon>
       </div>
 

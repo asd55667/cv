@@ -4,7 +4,7 @@ import { DefaultLayout } from '@/components/layouts/default';
 
 import { useAppState } from '@/AppContext';
 import { CVButton } from '@/components/button/Button';
-import { downloadPdf, useEventListener } from '@/utils/index';
+import { downloadPdf, downloadImage, useEventListener } from '@/utils/index';
 
 const Home: Component = () => {
   const context = useAppState();
@@ -24,9 +24,8 @@ const Home: Component = () => {
     window.print()
   }
 
-  const downloadPng = () => {
-    const node = document.getElementById('page')
-    if (!node) return
+  const downloadImg = () => {
+    downloadImage('png', `${context.cv.name}-${context.locale === 'en' ? 'cv' : '简历'}.png`)
   }
 
   onMount(resize)
@@ -44,7 +43,6 @@ const Home: Component = () => {
       }
     });
   }
-
 
   function beforePrint() {
     setZoom(1)
@@ -85,7 +83,7 @@ const Home: Component = () => {
         <CVButton onClick={switchTheme}>{theme()}</CVButton>
         <CVButton onClick={printCV}>{t('global.print')}</CVButton>
         <CVButton onClick={downloadPdf}>{t('global.pdf')}</CVButton>
-        <CVButton onClick={downloadPng}>{t('global.img')}</CVButton>
+        <CVButton onClick={downloadImg}>{t('global.img')}</CVButton>
       </div>
     </div>
   );
