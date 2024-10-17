@@ -20,6 +20,9 @@ code {
 :root {
   --background: #fff;
   --highlight: #7051EF;
+
+  --page-width: 595px;
+  --page-height: 842px;
 }
 
 .dark {

@@ -1,8 +1,8 @@
 .page {
   display: flex;
   flex-direction: column;
-  width: 595px;
-  height: 842px;
+  width: var(--page-width);
+  height: var(--page-height);
   background: var(--background);
   text-align: left;
   gap: 37px;

@@ -3,19 +3,18 @@ import styles from './block.module.css'
 
 import { useAppState } from '@/AppContext';
 interface IBlock {
-  label: JSX.Element;
-  class?: string;
-  children?: JSX.Element;
+  theme: 'light' | 'dark'
+  label: JSX.Element
+  children: JSX.Element
 }
 
 export const Block: Component<IBlock> = (props) => {
   return (
-    <div class={props?.class}>
-      <div class='lt1'>
-        {props.label}
+    <div class={styles[props.theme]}>
+      <div class={styles.title}>{props.label}</div>
+      <div class={styles.block}>
+        {props.children}
       </div>
-
-      {props.children}
     </div>
   );
 }
@@ -29,11 +28,8 @@ export const CVBlock: Component<ICVBlock> = (props) => {
   const theme = () => context.isDark ? "dark" : "light"
 
   return (
-    <div class={styles[theme()]}>
-      <div class={styles.title}>{props.label}</div>
-      <div class={styles.block}>
-        {props.children}
-      </div>
-    </div>
+    <Block theme={theme()} label={props.label}>
+      {props.children}
+    </Block>
   )
 }

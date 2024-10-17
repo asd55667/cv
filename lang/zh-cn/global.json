@@ -8,5 +8,8 @@
     "body": "believes this page definitely doesn't exist."
   },
   "dark_mode": "暗黑模式",
-  "light_mode": "明亮模式"
+  "light_mode": "明亮模式",
+  "print": "打印",
+  "pdf": "下载PDF",
+  "picture": "下载图片"
 }

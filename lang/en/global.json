@@ -8,5 +8,8 @@
     "body": "believes this page definitely doesn't exist."
   },
   "dark_mode": "Dark mode",
-  "light_mode": "Light mode"
+  "light_mode": "Light mode",
+  "print": "Print",
+  "pdf": "Download PDF",
+  "img": "Download Image"
 }

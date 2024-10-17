@@ -24,7 +24,7 @@ export const DefaultLayout: Component = (props) => {
   }
 
   return (
-    <main class={styles.page}>
+    <main id='page' class={styles.page}>
       <header class='flex items-center justify-between'>
         <Info />
 

@@ -1,14 +1,15 @@
-import type { Component } from 'solid-js';
+import { createSignal, Show, type Component } from 'solid-js';
 
 import { DefaultLayout } from '@/components/layouts/default';
 
 import { useAppState } from '@/AppContext';
+import { CVButton } from '@/components/button/Button';
+
 
 const Home: Component = () => {
   const context = useAppState();
   const { t } = context;
-  const title = () => (context.isDark ? t('global.light_mode') : t('global.dark_mode'));
-  const locale = () => t('global.lang')
+  const theme = () => (context.isDark ? t('global.light_mode') : t('global.dark_mode'));
 
   const switchTheme = () => {
     context.setDark(!context.isDark)
@@ -18,12 +19,28 @@ const Home: Component = () => {
     context.setLocale(context.locale === 'en' ? 'zh-cn' : 'en')
   }
 
+  const printCV = () => {
+    window.print()
+  }
+
+  const downloadPdf = () => {
+
+  }
+
+  const downloadPng = () => {
+
+  }
+
   return (
-    <div class="center flex items-start bg-#e1e1e1 min-w-100vw min-h-100vh p-10 gap-2">
+    <div class="center bg-#e1e1e1 min-w-100vw min-h-100vh gap-2">
       <DefaultLayout></DefaultLayout>
-      <div class="flex flex-col gap-2 w-22">
-        <button onClick={switchLang}>{locale()}</button>
-        <button onClick={switchTheme}>{title()}</button>
+
+      <div id="buttons" class="flex flex-col gap-4" style="height: var(--page-height);">
+        <CVButton onClick={switchLang}>{t('global.lang')}</CVButton>
+        <CVButton onClick={switchTheme}>{theme()}</CVButton>
+        <CVButton onClick={printCV}>{t('global.print')}</CVButton>
+        <CVButton onClick={downloadPdf}>{t('global.pdf')}</CVButton>
+        <CVButton onClick={downloadPng}>{t('global.img')}</CVButton>
       </div>
     </div>
   );
