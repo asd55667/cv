@@ -1,5 +1,7 @@
 import { jsPDF } from "jspdf";
 import html2canvas from 'html2canvas'
+import { Canvg } from 'canvg';
+
 
 import { onCleanup, onMount } from "solid-js";
 
@@ -29,10 +31,55 @@ async function generateImage(): Promise<HTMLCanvasElement> {
         avatar?.removeChild(avatar?.children[0])
         const [w, h] = [avatar.clientWidth, avatar.clientHeight]
         avatar.appendChild(drawAvatar(w, h))
+
+        svg2canvas(clonedDoc)
       }
     }).then(canvas => {
       resolve(canvas)
     })
+  })
+}
+
+async function svg2canvas(doc: Document) {
+  // svg collection
+  const collection = document.querySelector('#__svg__icons__dom__')
+  if (!collection) return
+  const svgElements = doc.querySelectorAll('svg')
+
+  svgElements.forEach((item, i) => {
+    if (item.id === '__svg__icons__dom__') return
+    const use = item.children[0] as unknown as SVGURIReference
+    const id = use.href.baseVal
+    let svg
+    for (let j = 0; j < collection.children.length; j++) {
+      const symbol = collection.children[j]
+      if (id.includes(symbol.id)) {
+        const s = symbol.outerHTML
+
+        const n = '<symbol'.length
+        svg = `<svg ${s.slice(n, -n)}svg>`
+        break
+      }
+    }
+    if (!svg) return
+    const canvas = document.createElement('canvas');
+
+    const { width, height } = item.getBoundingClientRect()
+    canvas.width = width;
+    canvas.height = height;
+    canvas.style.width = width + 'px'
+    canvas.style.height = height + 'px'
+
+    const ctx = canvas.getContext('2d', { willReadFrequently: true })
+
+    const v = Canvg.fromString(ctx!, svg)
+    v.start()
+
+    window.onbeforeunload = () => {
+      v.stop();
+    };
+
+    item.parentNode?.replaceChild(canvas, item)
   })
 }
 
