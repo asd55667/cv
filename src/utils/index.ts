@@ -2,7 +2,6 @@ import { jsPDF } from "jspdf";
 import html2canvas from 'html2canvas'
 import { Canvg } from 'canvg';
 
-
 import { onCleanup, onMount } from "solid-js";
 
 export function downloadPdf(download: string) {
@@ -101,7 +100,8 @@ function drawAvatar(w: number, h: number) {
 
   const ctx = canvas.getContext('2d')
 
-  ctx!.fillStyle = document.documentElement.className === 'dark' ? '#CD6F7355' : 'rgb(251, 213, 192)'
+  const isDark = document.documentElement.className === 'dark'
+  ctx!.fillStyle = isDark ? '#CD6F7355' : 'rgb(251, 213, 192)'
 
   const n = 5
   const padding = 16

@@ -21,6 +21,14 @@
   color: var(--highlight);
 }
 
+.line {
+  width: 45px;
+  height: 3px;
+  margin-bottom: 7px;
+  background: rgba(112, 81, 239, 1);
+}
+
+
 :global(.dark) {
   .avatar {
     width: 92.31px;
