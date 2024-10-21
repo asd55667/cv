@@ -168,6 +168,10 @@ export const AppContextProvider: ParentComponent = (props) => {
     else document.documentElement.classList.remove('dark');
   });
 
+  if (navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf('Chrome') === -1) {
+    document.documentElement.classList.add('safari');
+  }
+
   const t = i18n.translator(dict, i18n.resolveTemplate);
 
   const state: AppState = {

@@ -36,6 +36,11 @@ code {
 @media print {
   :root {
     font-size: 21px;
+
+  }
+
+  .safari {
+    zoom: 1.39;
   }
 
   body * {
