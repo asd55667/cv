@@ -65,21 +65,16 @@ export const DefaultLayout: Component = (props) => {
             </CVBlock>
           </Show>
 
-          <Show when={!context.isDark}>
-            <CVBlock label={t('home.skill').toLowerCase()}>
-              <div class="flex flex-col justify-center gap-1">
-                <For each={cv().skills}>
-                  {(skill) => (
-                    <li>{skill}</li>
-                  )}
-                </For>
-              </div>
-            </CVBlock>
-          </Show>
+          <CVBlock label={t('home.skill').toLowerCase()}>
+            <div class="flex flex-col justify-center gap-1">
+              <For each={cv().skills}>
+                {(skill) => (
+                  <li>{skill}</li>
+                )}
+              </For>
+            </div>
+          </CVBlock>
 
-          <Show when={context.isDark}>
-            <Social />
-          </Show>
         </div>
 
         <div class={styles.right}>
@@ -100,22 +95,24 @@ export const DefaultLayout: Component = (props) => {
                 {(expr) => (
                   <Experience title={expr.company} position={expr.position} date={expr.date}>
                     {expr.desc}
+
+                    <Show when={expr?.children?.length}>
+                      <div class={styles.subExpr}>
+                        <For each={expr.children}>
+                          {(child) => (<li>{child}</li>)}
+                        </For>
+                      </div>
+                    </Show>
                   </Experience>
                 )}
               </For>
             </div>
           </CVBlock>
 
+
+
           <Show when={context.isDark}>
-            <CVBlock label={t('home.skill')}>
-              <div class="flex flex-col justify-center gap-1">
-                <For each={cv().skills}>
-                  {(skill) => (
-                    <li>{skill}</li>
-                  )}
-                </For>
-              </div>
-            </CVBlock>
+            <Social />
           </Show>
         </div>
       </div>

@@ -5,6 +5,9 @@
   "email": "contact@johnmoore.com",
   "phone": "+1 (450) 780 9317",
   "site": "www.johncarter.com",
+  "socials": {
+    "github": ""
+  },
   "intro": "Lorem ipsum dolor sit amet consectetur adipiscing elit scelerisque sit senectus maecenas donec amet viverra Aliquam aenean eget gravida vitae nunc vitae sit.",
   "educations": [
     {
