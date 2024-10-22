@@ -1,59 +1,51 @@
 {
-  "name": "John Carter",
-  "position": "Product designer",
-  "id": "johncarter",
-  "email": "contact@johncarter.com",
-  "phone": "(487) 540 - 9804",
+  "name": "wcw",
+  "position": "FE developer",
+  "id": "wcw",
+  "email": "wcw3440@gmail.com",
+  "phone": "+86 18120587177",
   "site": "",
-  "intro": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dictumst sagittis nisi interdum mauris. Nulla hendrerit elementum ullamcorper rhoncus sed at. Odio ut sit tempor sit. Donec id elit feugiat cursus.",
+  "socials": {
+    "github": "https://github.com/asd55667"
+  },
+  "intro": "Proficient in web development related skills, with good programming literacy, good at Vue technology stack, WebRTC application development, automation scripting, like interesting and challenging work, looking forward to finding happiness in programming.",
   "educations": [
     {
-      "major": "Master of Digital Arts",
-      "school": "Stanford university",
-      "date": "2017 - 2022"
+      "major": "m.s of Mechatronics Engineering",
+      "school": "Shanghai Institute of Technology",
+      "date": "2018 - 2021"
     },
     {
-      "major": "B.S of User Experience",
-      "school": "Hardvard university",
+      "major": "b.s of Communication Engineering",
+      "school": "Wenhua College",
       "date": "2013 - 2017"
-    },
-    {
-      "major": "B.S Arts in Graphic Design",
-      "school": "MIT university",
-      "date": "2009 - 2013"
-    },
-    {
-      "major": "B.S of Design",
-      "school": "MIT",
-      "date": "2006 - 2009"
     }
   ],
-  "expertise": [],
+  "expertise": [
+    "Web Development",
+    "Web Engineering"
+  ],
   "skills": [
-    "UI Design",
-    "UX Design",
-    "Product Design",
-    "User Research",
-    "Design Thinking"
+    "Javascript",
+    "Vue/Vite",
+    "Webpack/Rollup",
+    "HTML5/CSS3/SVG",
+    "Shell/Python",
+    "Git"
   ],
   "experience": [
     {
-      "company": "FACEBOOK",
-      "position": "Lead Product Designer",
-      "date": "2020 - 2021",
-      "desc": "Quis orci amet porttitor blandit amet nullam sit elit purus blandit non ut non."
-    },
-    {
-      "company": "GOOGLE",
-      "position": "Lead Product Designer",
-      "date": "2019 - 2020",
-      "desc": "Ultrices proin elit, tellus euismod leo id volutpat cursus integer faucibus."
-    },
-    {
-      "company": "TWITTER",
-      "position": "Lead Product Designer",
-      "date": "2018 - 2019",
-      "desc": "Lorem ipsum dolor sit amet justo, rhoncus felis dolor sit."
+      "company": "TAL Education Group",
+      "position": "Frontend Developer",
+      "date": "2021 - 2024",
+      "desc": "",
+      "children": [
+        "Tianjige (Classroom Project Log Monitoring Platform): Customize multi-axis synchronous virtual scrolling for the lag page, and reduce the lag time from 9s to 3s",
+        "1v1Web Teaching Client: Responsible for layout adaptation, custom vite plugin to implement px2em, and WebAudio audio animation",
+        "Enterprise training C-side: common component development (recursive cascade filters, etc.), front-end learning progress calculation",
+        "Students' PC: In addition to the daily development iteration, take this project as the learning background, start the project from scratch, integrate various accessories of modern front-end development, and write code syntax conversion tools for this purpose, migrate the original business logic, and write VSCode plug-ins to improve efficiency.",
+        "Courseware Editor: canvas avatar cropper, web video editor, include features such as text, stickers, effects, filters, gl-transitions"
+      ]
     }
   ]
 }

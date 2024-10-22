@@ -1,59 +1,52 @@
 {
-  "name": "John Carter",
-  "position": "Product designer",
-  "id": "johncarter",
-  "email": "contact@johncarter.com",
-  "phone": "(487) 540 - 9804",
+  "name": "吴承炜",
+  "position": "前端工程师",
+  "id": "wcw",
+  "email": "344078971@qq.com",
+  "phone": "18120587177",
   "site": "",
-  "intro": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dictumst sagittis nisi interdum mauris. Nulla hendrerit elementum ullamcorper rhoncus sed at. Odio ut sit tempor sit. Donec id elit feugiat cursus.",
+  "socials": {
+    "github": "https://github.com/asd55667"
+  },
+  "intro": "熟练掌握Web开发相关技能, 具备良好的编程素养, 擅长Vue技术栈、WebRTC应用开发、自动化脚本, 喜欢有意思、有挑战的工作, 期待在编程中找到快乐",
   "educations": [
     {
-      "major": "Master of Digital Arts",
-      "school": "Stanford university",
-      "date": "2017 - 2022"
+      "major": "硕士 | 机械电子工程",
+      "school": "上海应用技术大学",
+      "date": "2018 - 2021"
     },
     {
-      "major": "B.S of User Experience",
-      "school": "Hardvard university",
+      "major": "本科 | 通信工程",
+      "school": "华中科技大学文华学院",
       "date": "2013 - 2017"
-    },
-    {
-      "major": "B.S Arts in Graphic Design",
-      "school": "MIT university",
-      "date": "2009 - 2013"
-    },
-    {
-      "major": "B.S of Design",
-      "school": "MIT",
-      "date": "2006 - 2009"
     }
   ],
-  "expertise": [],
+  "expertise": [
+    "前端开发",
+    "前端工程化"
+  ],
   "skills": [
-    "UI Design",
-    "UX Design",
-    "Product Design",
-    "User Research",
-    "Design Thinking"
+    "Javascript",
+    "Vue/Vite",
+    "Webpack/Rollup",
+    "HTML5/CSS3/SVG",
+    "Shell/Python",
+    "Git"
   ],
   "experience": [
     {
-      "company": "FACEBOOK",
-      "position": "Lead Product Designer",
-      "date": "2020 - 2021",
-      "desc": "Quis orci amet porttitor blandit amet nullam sit elit purus blandit non ut non."
-    },
-    {
-      "company": "GOOGLE",
-      "position": "Lead Product Designer",
-      "date": "2019 - 2020",
-      "desc": "Ultrices proin elit, tellus euismod leo id volutpat cursus integer faucibus."
-    },
-    {
-      "company": "TWITTER",
-      "position": "Lead Product Designer",
-      "date": "2018 - 2019",
-      "desc": "Lorem ipsum dolor sit amet justo, rhoncus felis dolor sit."
+      "company": "北京世纪好未来教育科技有限公司",
+      "position": "前端工程师",
+      "date": "2021 - 2024",
+      "desc": "从集团生产部门到学习云课堂部门, 先后参与了课件编辑器、课堂项目(学生端和授课端)和企培C端等项目的开发与维护工作. ",
+      "children": [
+        "天机阁(课堂项目日志监控平台): 为卡顿页面定制多轴同步的虚拟滚动, 将卡顿时间由9s降至3s",
+        "1v1Web授课端: 负责布局适配, 自定义vite plugin实现px2em, 实现 WebAudio音频动效",
+        "授课PC端: multi-repo的老项目, 子项目打成lib在主项目中使用, 优化webpack配置, 升级依赖, 接入模块联邦以支持热更新; 并添加子项目的回滚能力.",
+        "企培C端: 公共组件开发(递归级联筛选器等), 前端侧学习进度计算",
+        "学生PC端: 在日常的开发迭代外, 以此项目为学习背景, 从零起项目, 集成现代前端开发的各种配件, 并为此编写代码语法转换工具, 迁移原有业务逻辑, 编写VSCode插件提高效率",
+        "课件编辑器: canvas头像裁剪框, 仿剪映PC端的视频编辑器, 文字、贴纸、特效、滤镜、gl-transitions转场"
+      ]
     }
   ]
 }

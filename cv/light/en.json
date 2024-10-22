@@ -1,62 +1,52 @@
 {
-  "name": "john moore",
-  "position": "digital designer",
-  "id": "johnmoore",
-  "email": "contact@johnmoore.com",
-  "phone": "+1 (450) 780 9317",
-  "site": "www.johncarter.com",
+  "name": "wcw",
+  "position": "FE developer",
+  "id": "wcw",
+  "email": "wcw3440@gmail.com",
+  "phone": "+86 18120587177",
+  "site": "",
   "socials": {
-    "github": ""
+    "github": "https://github.com/asd55667"
   },
-  "intro": "Lorem ipsum dolor sit amet consectetur adipiscing elit scelerisque sit senectus maecenas donec amet viverra Aliquam aenean eget gravida vitae nunc vitae sit.",
+  "intro": "Proficient in web development related skills, with good programming literacy, good at Vue technology stack, WebRTC application development, automation scripting, like interesting and challenging work, looking forward to finding happiness in programming.",
   "educations": [
     {
-      "major": "B.S Arts in Graphic design",
-      "school": "Stanford university",
-      "date": "2017 - 2020"
+      "major": "m.s of Mechatronics Engineering",
+      "school": "Shanghai Institute of Technology",
+      "date": "2018 - 2021"
     },
     {
-      "major": "B.S of Design",
-      "school": "Hardvard university",
+      "major": "b.s of Communication Engineering",
+      "school": "Wenhua College",
       "date": "2013 - 2017"
     }
   ],
   "expertise": [
-    "Branding",
-    "Web Design",
-    "UI/UX Design",
-    "Web Development"
+    "Web Development",
+    "Web Engineering"
   ],
   "skills": [
-    "Lead & Strategy",
-    "Innovative",
-    "Team work",
-    "Goal oriented"
+    "Javascript",
+    "Vue/Vite",
+    "Webpack/Rollup",
+    "HTML5/CSS3/SVG",
+    "Shell/Python",
+    "Git"
   ],
   "experience": [
     {
-      "company": "Facebook",
-      "position": "Lead Product Designer",
-      "date": "2019 - Present",
-      "desc": "Eleifend volutpat sit eros, lobortis id lobortis placerat volutpat penatibus purus vestibulum id proin in eros a. Justo."
-    },
-    {
-      "company": "Youtube",
-      "position": "Lead Product Designer",
-      "date": "2018 - 2019",
-      "desc": "Ultrices proin elit, tellus euismod. Leo id volutpat cursus integer faucibus ultrices. Convallis ipsum eu adipiscing lorem."
-    },
-    {
-      "company": "Twitter",
-      "position": "Lead Product Designer",
-      "date": "2017 - 2018",
-      "desc": "Etiam commodo vulputate aliquam urna ac lacus. Sagittis arcu pulvinar ullamcorper ut. Blandit vel felis etiam."
-    },
-    {
-      "company": "Google",
-      "position": "Lead Product Designer",
-      "date": "2016 - 2017",
-      "desc": "Sed feugiat aliquam pharetra, consequat, volutpat pharetra sagittis tortor. Elementum proin arcu quisque adipiscing."
+      "company": "TAL Education Group",
+      "position": "Frontend Developer",
+      "date": "2021 - 2024",
+      "desc": "",
+      "children": [
+        "Tianjige (Classroom Project Log Monitoring Platform): Customize multi-axis synchronous virtual scrolling for the lag page, and reduce the lag time from 9s to 3s",
+        "1v1Web Teaching Client: Responsible for layout adaptation, custom vite plugin to implement px2em, and WebAudio audio animation",
+        "Teaching PC: old multi-repo project, sub-projects are used in the main project as lib, optimize webpack configuration, upgrade dependencies, access module federation to support hot updates; and add the ability to roll back sub-projects.",
+        "Enterprise training C-side: common component development (recursive cascade filters, etc.), front-end learning progress calculation",
+        "Students' PC: In addition to the daily development iteration, take this project as the learning background, start the project from scratch, integrate various accessories of modern front-end development, and write code syntax conversion tools for this purpose, migrate the original business logic, and write VSCode plug-ins to improve efficiency.",
+        "Courseware Editor: canvas avatar cropper, web video editor, include features such as text, stickers, effects, filters, gl-transitions"
+      ]
     }
   ]
 }
