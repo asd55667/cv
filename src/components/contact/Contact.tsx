@@ -33,13 +33,13 @@ export const Contact: Component = (props) => {
         {cv().phone}
       </div>
 
-      {cv().site && <div class={styles.item}>
+      {cv().site && <a class={styles.item} href={cv().site}>
         <Show when={!context.isDark}>
           <SvgIcon class={styles.icon} name="site" />
         </Show>
 
         {cv().site}
-      </div>}
+      </a>}
     </div>
   )
 }
