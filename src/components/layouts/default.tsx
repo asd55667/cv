@@ -25,7 +25,7 @@ export const DefaultLayout: Component = (props) => {
   }
 
   return (
-    <main id='page' class={styles.page}>
+    <main id='page' class={cn(styles.page, 'pb-10 md:pb-0 h-full md:h-[--page-height]')}>
       <header class='flex md:flex-row items-center justify-between'>
         <Info />
 

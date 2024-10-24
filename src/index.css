@@ -33,6 +33,10 @@ code {
 
 
 @media (min-width: 768px) {
+  .right {
+    width: 358.04px;
+  }
+
   .dark {
     .right {
       width: 250px;
@@ -43,12 +47,12 @@ code {
 
 @media print {
   :root {
-    font-size: 21px;
+    font-size: 20px;
 
   }
 
   .safari {
-    zoom: 1.39;
+    zoom: 1.3;
   }
 
   body * {
@@ -65,8 +69,9 @@ code {
     position: absolute;
     left: 0;
     top: 0;
+    padding-bottom: 0;
 
-    height: auto;
+    height: var(--page-height);
     width: 210mm;
     height: 297mm;
     overflow: visible;
@@ -80,6 +85,7 @@ code {
     }
 
     .right {
+      width: 358.04px;
       order: 0;
       height: 100%;
     }

@@ -1,15 +1,18 @@
-import { type Component } from 'solid-js';
+import { createSignal, Show, type Component } from 'solid-js';
 
 import { DefaultLayout } from '@/components/layouts/default';
 
 import { useAppState } from '@/AppContext';
 import { CVButton } from '@/components/button/Button';
-import { downloadPdf, downloadImage, useEventListener } from '@/utils/index';
+import { downloadPdf, downloadImage, useEventListener, cn } from '@/utils/index';
+import { SvgIcon } from '@/components/svg';
 
 const Home: Component = () => {
   const context = useAppState();
   const { t } = context;
   const theme = () => (context.isDark ? t('global.light_mode') : t('global.dark_mode'));
+
+  const [expanded, setExpanded] = createSignal(false)
 
   const switchTheme = () => {
     context.setDark(!context.isDark)
@@ -32,10 +35,10 @@ const Home: Component = () => {
   }
 
   return (
-    <div class="center relative min-w-100vw min-h-100vh gap-2 bg-[--background]  md:bg-#e1e1e1 ">
+    <div class="center relative min-w-100vw min-h-100vh gap-2 bg-[--background] md:bg-#e1e1e1 ">
       <DefaultLayout></DefaultLayout>
 
-      <div id="buttons" class="hidden md:flex flex-col gap-4 fixed right-0 top-0 translate-x--100% translate-y-25% h-full">
+      <div id="buttons" class="hidden md:flex flex-col gap-4 fixed right-0 top-0 lg:translate-x--100% translate-y-25% h-full">
         <CVButton onClick={switchLang}>{t('global.lang')}</CVButton>
         <CVButton onClick={switchTheme}>{theme()}</CVButton>
         <CVButton onClick={printCV}>{t('global.print')}</CVButton>
@@ -43,9 +46,22 @@ const Home: Component = () => {
         <CVButton onClick={download('png')}>{t('global.img')}</CVButton>
       </div>
 
-      {/* TODO: */}
-      <div class="flex md:hidden">
-        {/* aasd */}
+      <div class="fixed bottom-15 right-10 md:hidden text-white flex flex-col items-end">
+        <Show when={expanded()}>
+          <div class="flex flex-col gap-4 mb-4">
+            <CVButton onClick={switchLang}>{t('global.lang')}</CVButton>
+            <CVButton onClick={switchTheme}>{theme()}</CVButton>
+            <CVButton onClick={printCV}>{t('global.print')}</CVButton>
+            <CVButton onClick={download('pdf')}>{t('global.pdf')}</CVButton>
+            <CVButton onClick={download('png')}>{t('global.img')}</CVButton>
+          </div>
+        </Show>
+
+        <CVButton class='relative center w-12 h-12 opacity-40 hover:opacity-100'
+          onClick={() => setExpanded(!expanded())}
+        >
+          <SvgIcon class={cn("absolute w-12 h-12", expanded() && 'rotate-180')} name='up-arrow'></SvgIcon>
+        </CVButton>
       </div>
     </div>
   );
