@@ -5,6 +5,8 @@ import solidPlugin from 'vite-plugin-solid';
 import presetWind from '@unocss/preset-wind'
 import UnoCSS from 'unocss/vite'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import legacy from '@vitejs/plugin-legacy'
+
 import { px2remPlugin } from './build/px2rem'
 
 const projectRootDir = path.resolve(__dirname);
@@ -35,6 +37,9 @@ export default defineConfig({
       symbolId: 'icon-[dir]-[name]',
     }),
     px2remPlugin(),
+    legacy({
+      targets: ['defaults', 'not IE 11'],
+    })
   ],
   server: {
     port: 3000,
