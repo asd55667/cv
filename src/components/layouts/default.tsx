@@ -11,6 +11,7 @@ import { Experience } from '../experience/Experience';
 import { useAppState } from '@/AppContext';
 import { Social } from '../social/Social';
 import { Info } from '../info/Info';
+import { cn } from '@/utils';
 
 export const DefaultLayout: Component = (props) => {
   const context = useAppState()
@@ -25,7 +26,7 @@ export const DefaultLayout: Component = (props) => {
 
   return (
     <main id='page' class={styles.page}>
-      <header class='flex items-center justify-between'>
+      <header class='flex md:flex-row items-center justify-between'>
         <Info />
 
         <Show when={!context.isDark}>
@@ -33,15 +34,15 @@ export const DefaultLayout: Component = (props) => {
         </Show>
 
         <Show when={context.isDark}>
-          <Contact email={cv().email} phone={cv().phone} site={cv().site} />
+          <Contact />
         </Show>
       </header>
 
-      <div class={styles.main}>
-        <div class={styles.left}>
+      <div class={cn(styles.main, 'main flex-col md:flex-row')}>
+        <div class={cn(styles.left, 'flex-wrap dark:flex-col md:flex-col')}>
           <Show when={!context.isDark}>
-            <CVBlock label={t('home.contact')}>
-              <Contact email={cv().email} phone={cv().phone} site={cv().site} />
+            <CVBlock class={cn('contact-1 order-1 md:order-0 md:flex')} label={t('home.contact')}>
+              <Contact />
             </CVBlock>
           </Show>
 
@@ -77,7 +78,7 @@ export const DefaultLayout: Component = (props) => {
 
         </div>
 
-        <div class={styles.right}>
+        <div class={cn(styles.right, 'right md:order-0 order--1 md:h-full')}>
           <Show when={!context.isDark}>
             <CVBlock label={t("home.intro")}>
               <div class={styles.intro}>{cv().intro}</div>
@@ -108,8 +109,6 @@ export const DefaultLayout: Component = (props) => {
               </For>
             </div>
           </CVBlock>
-
-
 
           <Show when={context.isDark}>
             <Social />

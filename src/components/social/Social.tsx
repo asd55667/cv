@@ -9,7 +9,7 @@ export const Social: Component = (props) => {
   const cv = () => context.cv
 
   return (
-    <div class='flex flex-col justify-end'>
+    <div class='social hidden md:flex flex-col justify-end'>
       <div class={styles.id}>@{cv().id}</div>
 
       <div class={styles.socials}>

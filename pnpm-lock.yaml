@@ -20,6 +20,9 @@ importers:
       canvg:
         specifier: ^4.0.2
         version: 4.0.2
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
       html2canvas:
         specifier: ^1.4.1
         version: 1.4.1
@@ -29,6 +32,9 @@ importers:
       solid-js:
         specifier: ^1.9.1
         version: 1.9.2
+      tailwind-merge:
+        specifier: ^2.5.4
+        version: 2.5.4
     devDependencies:
       '@chromatic-com/storybook':
         specifier: ^1.9.0
@@ -814,10 +820,10 @@ packages:
       react-dom:
         optional: true
 
-  '@storybook/builder-vite@8.4.0-alpha.7':
-    resolution: {integrity: sha512-Q8as4xL7vrJtrZrukGopXGmrlPxXukLhmRIKT0INFJTBtEgHy3Gk4OEe5MOGIu50yMcHDBrx2+3ijAOzFsNw0g==}
+  '@storybook/builder-vite@8.4.0-alpha.8':
+    resolution: {integrity: sha512-XrJbxRR7jwvnzD6vfh3ciLTA7tZnRtR9BEHMsVqLMdRo6IeJjMA0uYp1B0HDCXoLv+enOitGFApKeOZah9OReA==}
     peerDependencies:
-      storybook: ^8.4.0-alpha.7
+      storybook: ^8.4.0-alpha.8
       vite: ^4.0.0 || ^5.0.0
 
   '@storybook/core@8.3.5':
@@ -828,10 +834,10 @@ packages:
     peerDependencies:
       storybook: ^8.3.5
 
-  '@storybook/csf-plugin@8.4.0-alpha.7':
-    resolution: {integrity: sha512-CndBjAxBqfjY19ZK22W80HEGDxJlLOTTl2JaIH0me7lTu46jXWfr4ly4NaaEHv2e2Tkzmk7hmK32g89laV/7ig==}
+  '@storybook/csf-plugin@8.4.0-alpha.8':
+    resolution: {integrity: sha512-rF2XzwYZpG0S9rxccq/3yTmNrORFL6xmQoafIp8WNxIx4UyVHbO4WzbLXqyWZijxbNZCDvWQNb0L6yug2tRImw==}
     peerDependencies:
-      storybook: ^8.4.0-alpha.7
+      storybook: ^8.4.0-alpha.8
 
   '@storybook/csf@0.1.11':
     resolution: {integrity: sha512-dHYFQH3mA+EtnCkHXzicbLgsvzYjcDJ1JWsogbItZogkPHgSJM/Wr71uMkcvw8v9mmCyP4NpXJuu6bPoVsOnzg==}
@@ -1312,6 +1318,10 @@ packages:
   clone@2.1.2:
     resolution: {integrity: sha512-3Pe/CF1Nn94hyhIYpjtiLhdCoEoz0DqQ+988E9gmeEdQZlojxnOb74wctFyuwWQHzqyf9X7C7MG8juUpqBJT8w==}
     engines: {node: '>=0.8'}
+
+  clsx@2.1.1:
+    resolution: {integrity: sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==}
+    engines: {node: '>=6'}
 
   collection-visit@1.0.0:
     resolution: {integrity: sha512-lNkKvzEeMBBjUGHZ+q6z9pSJla0KWAQPvtzhEV9+iGyQYG+pBpl7xKDhxoNSOZH2hhv0v5k0y2yAM4o4SjoSkw==}
@@ -2747,6 +2757,9 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
 
+  tailwind-merge@2.5.4:
+    resolution: {integrity: sha512-0q8cfZHMu9nuYP/b5Shb7Y7Sh1B7Nnl5GqNr1U+n2p6+mybvRtayrQ+0042Z5byvTA8ihjlP8Odo8/VnHbZu4Q==}
+
   telejson@7.2.0:
     resolution: {integrity: sha512-1QTEcJkJEhc8OnStBx/ILRu5J2p0GjvWsBx56bmZRqnrkdBMUe+nX92jxV+p3dB4CP6PZCdJMQJwCggkNBMzkQ==}
 
@@ -3695,9 +3708,9 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@storybook/builder-vite@8.4.0-alpha.7(storybook@8.3.5)(vite@5.4.8(@types/node@22.7.5))':
+  '@storybook/builder-vite@8.4.0-alpha.8(storybook@8.3.5)(vite@5.4.8(@types/node@22.7.5))':
     dependencies:
-      '@storybook/csf-plugin': 8.4.0-alpha.7(storybook@8.3.5)
+      '@storybook/csf-plugin': 8.4.0-alpha.8(storybook@8.3.5)
       browser-assert: 1.2.1
       storybook: 8.3.5
       ts-dedent: 2.2.0
@@ -3732,7 +3745,7 @@ snapshots:
     transitivePeerDependencies:
       - webpack-sources
 
-  '@storybook/csf-plugin@8.4.0-alpha.7(storybook@8.3.5)':
+  '@storybook/csf-plugin@8.4.0-alpha.8(storybook@8.3.5)':
     dependencies:
       storybook: 8.3.5
       unplugin: 1.14.1
@@ -4378,6 +4391,8 @@ snapshots:
       static-extend: 0.1.2
 
   clone@2.1.2: {}
+
+  clsx@2.1.1: {}
 
   collection-visit@1.0.0:
     dependencies:
@@ -5919,7 +5934,7 @@ snapshots:
 
   storybook-solidjs-vite@1.0.0-beta.2(storybook@8.3.5)(vite@5.4.8(@types/node@22.7.5)):
     dependencies:
-      '@storybook/builder-vite': 8.4.0-alpha.7(storybook@8.3.5)(vite@5.4.8(@types/node@22.7.5))
+      '@storybook/builder-vite': 8.4.0-alpha.8(storybook@8.3.5)(vite@5.4.8(@types/node@22.7.5))
     transitivePeerDependencies:
       - storybook
       - vite
@@ -6018,6 +6033,8 @@ snapshots:
       csso: 4.2.0
       picocolors: 1.1.0
       stable: 0.1.8
+
+  tailwind-merge@2.5.4: {}
 
   telejson@7.2.0:
     dependencies:

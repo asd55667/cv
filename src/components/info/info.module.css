@@ -12,6 +12,7 @@
 }
 
 .name {
+  flex: none;
   font-weight: 700;
   font-size: 25px;
   line-height: 34px;

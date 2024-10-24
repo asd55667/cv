@@ -5,15 +5,10 @@ import styles from './contact.module.css'
 import { SvgIcon } from '@/components/svg';
 import { useAppState } from '@/AppContext';
 
-interface IContact {
-  email: string;
-  phone: string;
-  site: string;
-}
-
-export const Contact: Component<IContact> = (props) => {
+export const Contact: Component = (props) => {
   const context = useAppState()
   const { t } = context
+  const cv = () => context.cv
   return (
     <div class={styles.contact}>
       <div class={styles.item}>
@@ -24,7 +19,7 @@ export const Contact: Component<IContact> = (props) => {
         <Show when={context.isDark}>
           <label>{t('home.email')}</label>
         </Show>
-        {props.email}
+        {cv().email}
       </div>
 
       <div class={styles.item}>
@@ -35,15 +30,15 @@ export const Contact: Component<IContact> = (props) => {
         <Show when={context.isDark}>
           <label>{t('home.phone')}</label>
         </Show>
-        {props.phone}
+        {cv().phone}
       </div>
 
-      {props.site && <div class={styles.item}>
+      {cv().site && <div class={styles.item}>
         <Show when={!context.isDark}>
           <SvgIcon class={styles.icon} name="site" />
         </Show>
 
-        {props.site}
+        {cv().site}
       </div>}
     </div>
   )

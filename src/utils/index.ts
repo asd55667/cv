@@ -3,6 +3,12 @@ import html2canvas from 'html2canvas'
 import { Canvg } from 'canvg';
 
 import { onCleanup, onMount } from "solid-js";
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
 
 export function downloadPdf(download: string) {
   generateImage().then(canvas => {

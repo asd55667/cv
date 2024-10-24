@@ -23,8 +23,6 @@ code {
 
   --page-width: 595px;
   --page-height: 842px;
-
-  background-color: #e1e1e1;
 }
 
 .dark {
@@ -32,6 +30,16 @@ code {
 
   word-spacing: 0.4rem;
 }
+
+
+@media (min-width: 768px) {
+  .dark {
+    .right {
+      width: 250px;
+    }
+  }
+}
+
 
 @media print {
   :root {
@@ -62,7 +70,40 @@ code {
     width: 210mm;
     height: 297mm;
     overflow: visible;
+
+    header {
+      flex-direction: row;
+    }
+
+    .main {
+      flex-direction: row;
+    }
+
+    .right {
+      order: 0;
+      height: 100%;
+    }
+
+    .social {
+      display: flex;
+    }
+
+    .contact-0 {
+      display: none;
+    }
+
+    .contact-1 {
+      display: flex;
+      order: 0;
+    }
   }
+
+  .dark {
+    .right {
+      width: 250px;
+    }
+  }
+
 
   #__svg__icons__dom__ * {
     visibility: visible;
