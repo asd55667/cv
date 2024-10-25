@@ -17,7 +17,7 @@ export const Experience: Component<IExperience> = (props) => {
     <div class={styles.expr}>
       <div class={styles.title}>
         {props.title}
-        <Show when={context.isDark}>
+        <Show when={context.isDark && context.locale === 'en'}>
           <span class={styles.date}>{props.date}</span>
         </Show>
       </div>
@@ -25,7 +25,7 @@ export const Experience: Component<IExperience> = (props) => {
       <div class={styles.row2}>
         <span class={styles.position}>{props.position}</span>
 
-        <Show when={!context.isDark}>
+        <Show when={!context.isDark || context.locale === 'zh-cn'}>
           <span class={styles.date}>{props.date}</span>
         </Show>
       </div>

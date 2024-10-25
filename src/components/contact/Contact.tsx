@@ -4,7 +4,7 @@ import styles from './contact.module.css'
 
 import { SvgIcon } from '@/components/svg';
 import { useAppState } from '@/AppContext';
-
+import { cn } from '@/utils';
 export const Contact: Component = (props) => {
   const context = useAppState()
   const { t } = context
@@ -22,7 +22,7 @@ export const Contact: Component = (props) => {
         {cv().email}
       </div>
 
-      <div class={styles.item}>
+      <div class={cn(styles.item, context.spotEvent === 'phone' && styles.spotlight)} >
         <Show when={!context.isDark}>
           <SvgIcon class={styles.icon} name="phone" />
         </Show>
@@ -34,7 +34,7 @@ export const Contact: Component = (props) => {
       </div>
 
       {cv().site && <a class={styles.item} href={cv().site}>
-        <Show when={!context.isDark}>
+        <Show when={!context.isDark} fallback={<label>{t('home.site')}</label>}>
           <SvgIcon class={styles.icon} name="site" />
         </Show>
 

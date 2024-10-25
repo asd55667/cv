@@ -13,7 +13,7 @@ interface IButton {
 
 export const Button: Component<IButton> = (props) => {
   return (
-    <button class={cn(styles[props.theme], props.class)} onClick={props.onClick}>
+    <button class={cn(styles[props.theme], styles.button,props.class)} onClick={props.onClick}>
       {props.children}
     </button>
   )

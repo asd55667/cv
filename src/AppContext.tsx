@@ -6,6 +6,7 @@ import {
   createContext,
   createEffect,
   createResource,
+  createSignal,
   startTransition,
   useContext,
 } from 'solid-js';
@@ -121,13 +122,15 @@ function deserializeSettings(value: string, location: Location): Settings {
     dark: 'dark' in parsed && typeof parsed.dark === 'boolean' ? parsed.dark : false,
   };
 }
-
+type SpotlightEvent = 'phone' | ''
 interface AppState {
   get isDark(): boolean;
   setDark(value: boolean): void;
   get locale(): Locale;
   setLocale(value: Locale): void;
   t: i18n.Translator<Dictionary>;
+  spotlight(event: SpotlightEvent, timeout?: number): void;
+  get spotEvent(): SpotlightEvent
   get dir(): 'ltr' | 'rtl';
   get cv(): TypeCV
 }
@@ -147,6 +150,7 @@ export const AppContextProvider: ParentComponent = (props) => {
     storage: storage.cookieStorage,
     deserialize: (value) => deserializeSettings(value, location),
   });
+  const [spotEvent, setSpotEvent] = createSignal<SpotlightEvent>('')
 
   const locale = () => settings.locale;
 
@@ -188,6 +192,15 @@ export const AppContextProvider: ParentComponent = (props) => {
       void startTransition(() => {
         set('locale', value);
       });
+    },
+    spotlight(event, timeout = 2e3) {
+      setSpotEvent(event)
+      setTimeout(() => {
+        setSpotEvent('')
+      }, timeout);
+    },
+    get spotEvent() {
+      return spotEvent()
     },
     t,
     get dir() {
