@@ -9,6 +9,9 @@ export const Contact: Component = (props) => {
   const context = useAppState()
   const { t } = context
   const cv = () => context.cv
+
+  let el: HTMLDivElement | undefined
+
   return (
     <div class={styles.contact}>
       <div class={styles.item}>
@@ -22,7 +25,7 @@ export const Contact: Component = (props) => {
         {cv().email}
       </div>
 
-      <div class={cn(styles.item, context.spotEvent === 'phone' && styles.spotlight)} >
+      <div ref={el} class={cn(styles.item, context.spot('phone', el))} >
         <Show when={!context.isDark}>
           <SvgIcon class={styles.icon} name="phone" />
         </Show>
@@ -33,7 +36,7 @@ export const Contact: Component = (props) => {
         {cv().phone}
       </div>
 
-      {cv().site && <a class={styles.item} href={cv().site}>
+      {cv().site && !context.isDark && <a class={styles.item} href={cv().site}>
         <Show when={!context.isDark} fallback={<label>{t('home.site')}</label>}>
           <SvgIcon class={styles.icon} name="site" />
         </Show>

@@ -132,7 +132,6 @@ function drawAvatar(w: number, h: number) {
   return canvas
 }
 
-
 export function useEventListener(target: Element | Window, event: string, listener: (evt: Event) => void) {
   onMount(() => {
     target.addEventListener(event, listener)

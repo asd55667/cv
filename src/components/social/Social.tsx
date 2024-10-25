@@ -6,6 +6,7 @@ import { useAppState } from '@/AppContext';
 
 export const Social: Component = (props) => {
   const context = useAppState()
+  const { t } = context
   const cv = () => context.cv
 
   const onWechatClick = () => {
@@ -48,11 +49,13 @@ export const Social: Component = (props) => {
 
           <Show when={context.locale === 'zh-cn'}>
             <a href={cv().socials.github}>代码仓库</a>
-            <button class="text-[1em] font-inherit" onClick={onWechatClick}>微信</button>
+            <button class="text-[1em] font-inherit relative" onClick={onWechatClick}>微信</button>
             <a href={cv().socials.zhihu}>知乎</a>
             <a href={cv().socials.xiaohongshu}>小红书</a>
             <a href={cv().socials.douyin}>抖音</a>
           </Show>
+
+          <a href={cv().site}>{t('home.site')}</a>
         </Show>
       </div>
 

@@ -130,7 +130,7 @@ interface AppState {
   setLocale(value: Locale): void;
   t: i18n.Translator<Dictionary>;
   spotlight(event: SpotlightEvent, timeout?: number): void;
-  get spotEvent(): SpotlightEvent
+  spot(event: SpotlightEvent, el?: HTMLElement): '' | 'spotlight'
   get dir(): 'ltr' | 'rtl';
   get cv(): TypeCV
 }
@@ -199,8 +199,15 @@ export const AppContextProvider: ParentComponent = (props) => {
         setSpotEvent('')
       }, timeout);
     },
-    get spotEvent() {
-      return spotEvent()
+    spot(event, el) {
+      if (spotEvent() === event && el) {
+        const { offsetLeft: x, offsetTop: y, offsetWidth: w, offsetHeight: h } = el
+        console.log(x, y, w, h, el);
+        document.documentElement.style.setProperty('--spotlight-x', `${x + w / 2}`)
+        document.documentElement.style.setProperty('--spotlight-y', `${y + h / 2}`)
+      }
+
+      return spotEvent() === event ? 'spotlight' : ''
     },
     t,
     get dir() {

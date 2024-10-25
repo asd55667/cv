@@ -8,6 +8,8 @@ export const Info: Component = (props) => {
   const context = useAppState()
   const cv = () => context.cv
 
+  let el: HTMLDivElement | undefined
+
   return (
     <div class='flex items-center justify-between gap-4'>
       <div id="avatar" class={styles.avatar}>
@@ -17,7 +19,7 @@ export const Info: Component = (props) => {
       <div class={styles.name}>
         <Show when={!context.isDark}><div class={styles.line}></div></Show>
 
-        <div>
+        <div ref={el} class={context.spot('', el)}>
           <Show when={!context.isDark && context.locale === 'en'}><span>i’m </span></Show>
           {cv().name}
           <Show when={!context.isDark && context.locale === 'en'}><span>, </span></Show>

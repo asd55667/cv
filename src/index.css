@@ -42,11 +42,17 @@ button {
 
   --page-width: 595px;
   --page-height: 842px;
+
+  --spotlight-x: 0;
+  --spotlight-y: 0;
+  --spotlight-lightness: 30;
+
 }
 
 .dark {
   --background: #000;
 
+  --spotlight-lightness: 100;
   word-spacing: 0.4rem;
 }
 
@@ -129,6 +135,10 @@ button {
     }
   }
 
+  .spotlight::after {
+    display: none;
+  }
+
 
   #__svg__icons__dom__ * {
     visibility: visible;
@@ -145,4 +155,18 @@ button {
     /* Remove default margins */
   }
 
+}
+
+.spotlight {
+  &:after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(circle at calc(var(--spotlight-x) * 1px) calc(var(--spotlight-y) * 1px), hsl(0 0% var(--spotlight-lightness) / 0.4), transparent 8vmin);
+    background-attachment: fixed;
+    opacity: 0.9;
+    transition: opacity 0.2s;
+    pointer-events: none;
+  }
 }
