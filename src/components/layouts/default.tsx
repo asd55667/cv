@@ -24,13 +24,21 @@ export const DefaultLayout: Component = (props) => {
     return !context.isDark ? title.toLowerCase() : title
   }
 
+  const Intro = () =>
+    <CVBlock
+      class=''
+      label={context.isDark ? `${t('home.about')}${isEn() ? ' ' : ''}${cv().name}` : t("home.intro")}
+    >
+      <div class={styles.intro}>{cv().intro}</div>
+    </CVBlock>
+
   return (
     <main id='page' class={cn(styles.page, 'pb-10 md:pb-0 h-full md:h-[--page-height]')}>
       <header class='flex md:flex-row items-center justify-between'>
         <Info />
 
         <Show when={!context.isDark}>
-          <Social class='hidden md:flex' />
+          <Social class={'social hidden md:flex'} />
         </Show>
 
         <Show when={context.isDark}>
@@ -47,9 +55,7 @@ export const DefaultLayout: Component = (props) => {
           </Show>
 
           <Show when={context.isDark}>
-            <CVBlock label={`${t('home.about')}${isEn() ? ' ' : ''}${cv().name}`}>
-              <div class={styles.intro}>{cv().intro}</div>
-            </CVBlock>
+            <Intro />
           </Show>
 
           <CVBlock label={edu()}>
@@ -80,9 +86,7 @@ export const DefaultLayout: Component = (props) => {
 
         <div class={cn(styles.right, 'right md:order-0 order--1 md:h-full')}>
           <Show when={!context.isDark}>
-            <CVBlock label={t("home.intro")}>
-              <div class={styles.intro}>{cv().intro}</div>
-            </CVBlock>
+            <Intro />
           </Show>
 
           <CVBlock
@@ -116,7 +120,7 @@ export const DefaultLayout: Component = (props) => {
         </div>
 
         <Show when={!context.isDark}>
-          <Social class='md:hidden flex' />
+          <Social class={'social-m md:hidden flex'} />
         </Show>
       </div>
     </main>

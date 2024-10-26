@@ -4,7 +4,7 @@ import { DefaultLayout } from '@/components/layouts/default';
 
 import { useAppState } from '@/AppContext';
 import { CVButton } from '@/components/button/Button';
-import { downloadPdf, downloadImage, useEventListener, cn } from '@/utils/index';
+import { downloadPdf, downloadImage, cn } from '@/utils/index';
 import { SvgIcon } from '@/components/svg';
 
 const Home: Component = () => {
@@ -38,26 +38,26 @@ const Home: Component = () => {
     }
   }
 
+  const Buttons = () => <>
+    <CVButton onClick={switchLang}>{t('global.lang')}</CVButton>
+    <CVButton onClick={switchTheme}>{theme()}</CVButton>
+    <CVButton onClick={printCV}>{t('global.print')}</CVButton>
+    <CVButton onClick={download('pdf')}>{t('global.pdf')}</CVButton>
+    <CVButton onClick={download('png')}>{t('global.img')}</CVButton>
+  </>
+
   return (
     <div class="center relative min-w-100vw min-h-100vh gap-2 bg-[--background] md:bg-#e1e1e1 ">
       <DefaultLayout></DefaultLayout>
 
       <div id="buttons" class="hidden md:flex flex-col gap-4 fixed right-0 top-0 lg:translate-x--100% translate-y-25% h-full">
-        <CVButton onClick={switchLang}>{t('global.lang')}</CVButton>
-        <CVButton onClick={switchTheme}>{theme()}</CVButton>
-        <CVButton onClick={printCV}>{t('global.print')}</CVButton>
-        <CVButton onClick={download('pdf')}>{t('global.pdf')}</CVButton>
-        <CVButton onClick={download('png')}>{t('global.img')}</CVButton>
+        <Buttons />
       </div>
 
       <div class="fixed bottom-15 right-10 md:hidden text-white flex flex-col items-end">
         <Show when={expanded()}>
           <div class="flex flex-col gap-4 mb-4">
-            <CVButton onClick={switchLang}>{t('global.lang')}</CVButton>
-            <CVButton onClick={switchTheme}>{theme()}</CVButton>
-            <CVButton onClick={printCV}>{t('global.print')}</CVButton>
-            <CVButton onClick={download('pdf')}>{t('global.pdf')}</CVButton>
-            <CVButton onClick={download('png')}>{t('global.img')}</CVButton>
+            <Buttons />
           </div>
         </Show>
 

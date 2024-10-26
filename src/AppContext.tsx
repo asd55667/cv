@@ -214,7 +214,7 @@ export const AppContextProvider: ParentComponent = (props) => {
       return t('global.dir') === 'ltr' ? 'ltr' : 'rtl';
     },
     get cv() {
-      return curCV()
+      return curCV.latest
     }
   };
 

@@ -121,6 +121,10 @@ button {
       display: flex;
     }
 
+    .social-m {
+      display: none;
+    }
+
     .contact-0 {
       display: none;
     }

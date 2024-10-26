@@ -1,5 +1,8 @@
 .button {
   width: 96px;
+  color: rgba(255, 255, 255, 1);
+
+  transition: all 1s ease, color 1s ease;
 }
 
 .light {
@@ -10,7 +13,6 @@
   font-size: 9.17px;
   font-weight: 700;
   line-height: 10.38px;
-  color: rgba(255, 255, 255, 1);
 
   padding: 13.75px 15.4px 13.75px 15.4px;
   gap: 5.19px;
@@ -24,7 +26,6 @@
   font-weight: 600;
   line-height: 21.08px;
   letter-spacing: -0.02em;
-  color: rgba(255, 255, 255, 1);
   background-color: rgba(40, 40, 40, 1);
   padding: 12px 0;
   text-decoration: underline;
