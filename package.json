@@ -12,6 +12,7 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
+    "prettier": "prettier --write .",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -29,6 +30,8 @@
     "css-tree": "^3.0.0",
     "fast-glob": "^3.3.2",
     "magic-string": "^0.30.12",
+    "prettier": "^3.3.3",
+    "simple-git-hooks": "^2.11.1",
     "solid-devtools": "^0.29.2",
     "storybook": "^8.3.5",
     "storybook-solidjs": "^1.0.0-beta.2",
@@ -49,5 +52,9 @@
     "jspdf": "^2.5.2",
     "solid-js": "^1.9.1",
     "tailwind-merge": "^2.5.4"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npm run prettier",
+    "preserveUnused": ["commit-msg"]
   }
 }

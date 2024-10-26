@@ -46,5 +46,12 @@ export default defineConfig({
   },
   build: {
     target: 'esnext',
-  },
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true, // Removes console.log in production builds
+        drop_debugger: true // Optionally remove debugger statements
+      }
+    }
+  }
 });
