@@ -3,8 +3,13 @@ import { Show, type Component } from "solid-js";
 import styles from './social.module.css'
 import { SvgIcon } from '@/components/svg';
 import { useAppState } from '@/AppContext';
+import { cn } from "@/utils";
 
-export const Social: Component = (props) => {
+interface ISocial {
+  class?: string
+}
+
+export const Social: Component<ISocial> = (props) => {
   const context = useAppState()
   const { t } = context
   const cv = () => context.cv
@@ -14,7 +19,7 @@ export const Social: Component = (props) => {
   }
 
   return (
-    <div class='social hidden md:flex flex-col justify-end'>
+    <div class={cn('social flex-col justify-end', props.class)}>
       <div class={styles.id}>@{cv().id}</div>
 
       <div class={styles.socials}>

@@ -54,6 +54,8 @@ button {
 
   --spotlight-lightness: 100;
   word-spacing: 0.4rem;
+
+  transition: all 1s ease-in-out;
 }
 
 
@@ -160,7 +162,7 @@ button {
 .spotlight {
   &:after {
     content: "";
-    position: fixed;
+    position: absolute;
     inset: 0;
     background:
       radial-gradient(circle at calc(var(--spotlight-x) * 1px) calc(var(--spotlight-y) * 1px), hsl(0 0% var(--spotlight-lightness) / 0.4), transparent 8vmin);

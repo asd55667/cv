@@ -16,14 +16,17 @@ const Home: Component = () => {
 
   const switchTheme = () => {
     context.setDark(!context.isDark)
+    setExpanded(!expanded())
   }
 
   const switchLang = () => {
+    setExpanded(!expanded())
     context.setLocale(context.locale === 'en' ? 'zh-cn' : 'en')
   }
 
   const printCV = () => {
     window.print()
+    setExpanded(!expanded())
   }
 
   const download = (type: 'pdf' | 'png') => {
@@ -31,6 +34,7 @@ const Home: Component = () => {
       const filename = `${context.cv.name}-${context.locale === 'en' ? 'cv' : '简历'}`
       if (type === 'pdf') downloadPdf(filename)
       if (type === 'png') downloadImage('png', filename + '.png')
+      setExpanded(!expanded())
     }
   }
 
@@ -57,7 +61,7 @@ const Home: Component = () => {
           </div>
         </Show>
 
-        <CVButton class='relative center w-12 h-12 opacity-40 hover:opacity-100'
+        <CVButton class='relative center w-12 h-12 opacity-70 hover:opacity-100'
           onClick={() => setExpanded(!expanded())}
         >
           <SvgIcon class={cn("absolute w-12 h-12", expanded() && 'rotate-180')} name='up-arrow'></SvgIcon>

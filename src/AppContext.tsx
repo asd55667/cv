@@ -202,7 +202,7 @@ export const AppContextProvider: ParentComponent = (props) => {
     spot(event, el) {
       if (spotEvent() === event && el) {
         const { offsetLeft: x, offsetTop: y, offsetWidth: w, offsetHeight: h } = el
-        console.log(x, y, w, h, el);
+        // console.log(x, y, w, h, el);
         document.documentElement.style.setProperty('--spotlight-x', `${x + w / 2}`)
         document.documentElement.style.setProperty('--spotlight-y', `${y + h / 2}`)
       }
