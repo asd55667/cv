@@ -29,7 +29,6 @@
   background: rgba(112, 81, 239, 1);
 }
 
-
 :global(.dark) {
   .avatar {
     width: 92.31px;
@@ -37,7 +36,7 @@
     /* background-color: #F0F0F0; */
     /* color: #CD6F73; */
     background-color: #222;
-    color: #CD6F7355;
+    color: #cd6f7355;
   }
 
   .name {

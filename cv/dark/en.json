@@ -24,10 +24,7 @@
       "date": "2013 - 2017"
     }
   ],
-  "expertise": [
-    "Web Development",
-    "Web Engineering"
-  ],
+  "expertise": ["Web Development", "Web Engineering"],
   "skills": [
     "Javascript",
     "Vue/Vite",

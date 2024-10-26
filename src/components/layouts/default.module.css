@@ -24,7 +24,6 @@
   }
 }
 
-
 .left {
   display: flex;
   /* flex-direction: column; */
@@ -38,12 +37,12 @@
   flex-direction: column;
   gap: 35.76px;
   /* height: 100%; */
-  box-shadow: 0px 10px 28px 0px #27194D08;
+  box-shadow: 0px 10px 28px 0px #27194d08;
 
   box-shadow: 0px 3px 20px 0px var(--highlight);
 
-  box-shadow: 0px -2px 5px 0px #27194D05;
-  border: 0.5px solid #E5E5EA;
+  box-shadow: 0px -2px 5px 0px #27194d05;
+  border: 0.5px solid #e5e5ea;
   /* border-bottom: none; */
   /* border-right: none; */
 
@@ -59,7 +58,7 @@ li::marker {
 
 .intro {
   padding-bottom: 8.69px;
-  border-bottom: solid 0.5px #E5E5EA;
+  border-bottom: solid 0.5px #e5e5ea;
 }
 
 .exprs {
@@ -74,7 +73,6 @@ li::marker {
     gap: 6px;
   }
 }
-
 
 :global(.dark) .page {
   gap: 35px;

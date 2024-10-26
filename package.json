@@ -55,6 +55,8 @@
   },
   "simple-git-hooks": {
     "pre-commit": "npm run prettier",
-    "preserveUnused": ["commit-msg"]
+    "preserveUnused": [
+      "commit-msg"
+    ]
   }
 }

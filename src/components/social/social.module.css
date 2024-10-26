@@ -18,7 +18,6 @@
   width: 100%;
 }
 
-
 :global(.dark) {
   .id {
     font-size: 11px;

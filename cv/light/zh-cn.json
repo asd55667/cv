@@ -24,10 +24,7 @@
       "date": "2013 - 2017"
     }
   ],
-  "expertise": [
-    "前端开发",
-    "前端工程化"
-  ],
+  "expertise": ["前端开发", "前端工程化"],
   "skills": [
     "Javascript",
     "Vue/Vite",

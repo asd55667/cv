@@ -1,10 +1,10 @@
-import type { Component } from 'solid-js';
-import { Suspense } from 'solid-js';
+import type { Component } from "solid-js";
+import { Suspense } from "solid-js";
 
-import { MetaProvider } from '@solidjs/meta';
+import { MetaProvider } from "@solidjs/meta";
 
-import { AppContextProvider } from './AppContext';
-import Home from './pages/home';
+import { AppContextProvider } from "./AppContext";
+import Home from "./pages/home";
 
 const App: Component = () => {
   return (
@@ -14,7 +14,7 @@ const App: Component = () => {
           <Home />
         </Suspense>
       </AppContextProvider>
-    </MetaProvider >
+    </MetaProvider>
   );
 };
 

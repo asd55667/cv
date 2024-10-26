@@ -1,22 +1,22 @@
 import { Show, type Component } from "solid-js";
 
-import styles from './social.module.css'
-import { SvgIcon } from '@/components/svg';
-import { useAppState } from '@/AppContext';
+import styles from "./social.module.css";
+import { SvgIcon } from "@/components/svg";
+import { useAppState } from "@/AppContext";
 import { cn } from "@/utils";
 
 interface ISocial {
-  class?: string
+  class?: string;
 }
 
 export const Social: Component<ISocial> = (props) => {
-  const context = useAppState()
-  const { t } = context
-  const cv = () => context.cv
+  const context = useAppState();
+  const { t } = context;
+  const cv = () => context.cv;
 
   const onWechatClick = () => {
-    context.spotlight('phone')
-  }
+    context.spotlight("phone");
+  };
 
   return (
     <div class={cn('flex-col justify-end', props.class)}>
@@ -24,8 +24,10 @@ export const Social: Component<ISocial> = (props) => {
 
       <div class={styles.socials}>
         <Show when={!context.isDark}>
-          <Show when={context.locale === 'en'}>
-            <a href={cv().socials.github}><SvgIcon class={styles.icon} name="github-circle" /></a>
+          <Show when={context.locale === "en"}>
+            <a href={cv().socials.github}>
+              <SvgIcon class={styles.icon} name="github-circle" />
+            </a>
             <SvgIcon class={styles.icon} name="facebook" />
             <SvgIcon class={styles.icon} name="twitter" />
             <SvgIcon class={styles.icon} name="instagram" />
@@ -34,17 +36,27 @@ export const Social: Component<ISocial> = (props) => {
             <SvgIcon class={styles.icon} name="behance" />
           </Show>
 
-          <Show when={context.locale === 'zh-cn'}>
-            <a href={cv().socials.github}><SvgIcon class={styles.icon} name="github" /></a>
-            <button class="center" onClick={onWechatClick}><SvgIcon class={styles.icon} name="wechat" /></button>
-            <a class='center' href={cv().socials.zhihu}><SvgIcon class={styles.icon} name="zhihu" /></a>
-            <a class='center' href={cv().socials.xiaohongshu}><SvgIcon class={styles.icon} name="xiaohongshu" /></a>
-            <a class='center' href={cv().socials.douyin}><SvgIcon class={styles.icon} name="tiktok" /></a>
+          <Show when={context.locale === "zh-cn"}>
+            <a href={cv().socials.github}>
+              <SvgIcon class={styles.icon} name="github" />
+            </a>
+            <button class="center" onClick={onWechatClick}>
+              <SvgIcon class={styles.icon} name="wechat" />
+            </button>
+            <a class="center" href={cv().socials.zhihu}>
+              <SvgIcon class={styles.icon} name="zhihu" />
+            </a>
+            <a class="center" href={cv().socials.xiaohongshu}>
+              <SvgIcon class={styles.icon} name="xiaohongshu" />
+            </a>
+            <a class="center" href={cv().socials.douyin}>
+              <SvgIcon class={styles.icon} name="tiktok" />
+            </a>
           </Show>
         </Show>
 
         <Show when={context.isDark}>
-          <Show when={context.locale === 'en'}>
+          <Show when={context.locale === "en"}>
             <a href={cv().socials.github}>Github</a>
             <div>Twitter</div>
             <div>Facebook</div>
@@ -52,18 +64,22 @@ export const Social: Component<ISocial> = (props) => {
             <div>TikToc</div>
           </Show>
 
-          <Show when={context.locale === 'zh-cn'}>
+          <Show when={context.locale === "zh-cn"}>
             <a href={cv().socials.github}>代码仓库</a>
-            <button class="text-[1em] font-inherit relative" onClick={onWechatClick}>微信</button>
+            <button
+              class="text-[1em] font-inherit relative"
+              onClick={onWechatClick}
+            >
+              微信
+            </button>
             <a href={cv().socials.zhihu}>知乎</a>
             <a href={cv().socials.xiaohongshu}>小红书</a>
             <a href={cv().socials.douyin}>抖音</a>
           </Show>
 
-          <a href={cv().site}>{t('home.site')}</a>
+          <a href={cv().site}>{t("home.site")}</a>
         </Show>
       </div>
-
     </div>
-  )
-}
+  );
+};

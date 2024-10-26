@@ -2,7 +2,9 @@
   width: 96px;
   color: rgba(255, 255, 255, 1);
 
-  transition: all 1s ease, color 1s ease;
+  transition:
+    all 1s ease,
+    color 1s ease;
 }
 
 .light {
@@ -19,7 +21,6 @@
   border-radius: 10.38px;
   box-sizing: border-box;
 }
-
 
 .dark {
   font-size: 15.22px;

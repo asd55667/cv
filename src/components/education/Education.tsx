@@ -1,21 +1,21 @@
-import { type Component } from 'solid-js';
+import { type Component } from "solid-js";
 
-import { For } from 'solid-js';
+import { For } from "solid-js";
 
-import styles from './education.module.css'
+import styles from "./education.module.css";
 
-import { useAppState } from '@/AppContext';
+import { useAppState } from "@/AppContext";
 
 interface IEducation {
   educations: {
     major: string;
     school: string;
     date: string;
-  }[]
+  }[];
 }
 
 export const Education: Component<IEducation> = (props) => {
-  const context = useAppState()
+  const context = useAppState();
 
   return (
     <div class={styles.edus}>
@@ -30,5 +30,5 @@ export const Education: Component<IEducation> = (props) => {
         )}
       </For>
     </div>
-  )
-}
+  );
+};
