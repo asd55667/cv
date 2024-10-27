@@ -2,24 +2,23 @@ import { type Component } from "solid-js";
 
 import { For } from "solid-js";
 
-import styles from "./education.module.css";
+import positive from "./education.module.css";
+import negative from "./contrast.module.css";
 
 import { useAppState } from "@/AppContext";
 
 interface IEducation {
-  educations: {
-    major: string;
-    school: string;
-    date: string;
-  }[];
+  reverse: boolean
 }
 
 export const Education: Component<IEducation> = (props) => {
   const context = useAppState();
+  const cv = () => context.cv
+  const styles = props.reverse ? negative : positive
 
   return (
     <div class={styles.edus}>
-      <For each={props.educations}>
+      <For each={cv().educations}>
         {(edu) => (
           <div class={styles.edu}>
             <div class={styles.major}>{edu.major}</div>

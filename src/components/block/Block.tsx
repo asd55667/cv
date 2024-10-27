@@ -23,11 +23,13 @@ export const Block: Component<IBlock> = (props) => {
 interface ICVBlock {
   label: JSX.Element;
   children: JSX.Element;
+  reverse: boolean;
   class?: string;
 }
 export const CVBlock: Component<ICVBlock> = (props) => {
   const context = useAppState();
-  const theme = () => (context.isDark ? "dark" : "light");
+  const isDark = () => context.isDark && !props.reverse || !context.isDark && props.reverse
+  const theme = () => (isDark() ? "dark" : "light");
 
   return (
     <Block

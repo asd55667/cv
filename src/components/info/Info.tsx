@@ -1,25 +1,31 @@
 import { createEffect, createSignal, type Component } from "solid-js";
 
-import styles from "./info.module.css";
+import positive from "./info.module.css";
+import negative from "./contrast.module.css";
 import { SvgIcon } from "@/components/svg";
 import { useAppState } from "@/AppContext";
 import { cn } from "@/utils";
 
-export const Info: Component = (props) => {
+interface IInfo {
+  reverse: boolean
+}
+
+export const Info: Component<IInfo> = (props) => {
   const context = useAppState();
   const cv = () => context.cv;
 
   let el: HTMLDivElement | undefined;
-
   const [hideSpan, setHideSpan] = createSignal(false);
+  const styles = props.reverse ? negative : positive
+  const isDark = () => context.isDark && !props.reverse || !context.isDark && props.reverse
 
   createEffect(() => !!context.locale && setHideSpan(false));
 
   const animatedSpanClass = () =>
-    cn(styles[context.locale], hideSpan() && "hidden", "dark:hidden");
+    cn(styles[context.locale], hideSpan() && "hidden", isDark() && "hidden");
 
   const onAnimationEnd = () => {
-    if (context.locale === "zh-cn" || context.isDark) setHideSpan(true);
+    if (context.locale === "zh-cn" || isDark() && !props.reverse) setHideSpan(true);
   };
 
   return (
@@ -29,9 +35,9 @@ export const Info: Component = (props) => {
       </div>
 
       <div class={styles.name}>
-        <div class={cn(styles.line, "dark:hidden")}></div>
+        <div class={cn(styles.line, isDark() && "hidden")}></div>
 
-        <div ref={el} class={cn(context.isDark && context.spot("", el))}>
+        <div ref={el} class={cn(isDark() && context.spot("", el))}>
           <span class={animatedSpanClass()} onanimationend={onAnimationEnd}>
             i’m{" "}
           </span>

@@ -1,18 +1,23 @@
 import { Show, type Component } from "solid-js";
 
-import styles from "./social.module.css";
+import positive from "./social.module.css";
+import negative from "./contrast.module.css";
 import { SvgIcon } from "@/components/svg";
 import { useAppState } from "@/AppContext";
 import { cn } from "@/utils";
 
 interface ISocial {
   class?: string;
+  reverse: boolean
 }
 
 export const Social: Component<ISocial> = (props) => {
   const context = useAppState();
   const { t } = context;
   const cv = () => context.cv;
+
+  const styles = props.reverse ? negative : positive
+  const isDark = () => context.isDark && !props.reverse || !context.isDark && props.reverse
 
   const onWechatClick = () => {
     context.spotlight("phone");
@@ -21,9 +26,10 @@ export const Social: Component<ISocial> = (props) => {
   return (
     <div class={cn("flex-col justify-end", props.class)}>
       <div class={styles.id}>@{cv().id}</div>
+      {isDark() && 1123}
 
       <div class={styles.socials}>
-        <Show when={!context.isDark}>
+        <Show when={!isDark()}>
           <Show when={context.locale === "en"}>
             <a href={cv().socials.github}>
               <SvgIcon class={styles.icon} name="github-circle" />
@@ -55,7 +61,7 @@ export const Social: Component<ISocial> = (props) => {
           </Show>
         </Show>
 
-        <Show when={context.isDark}>
+        <Show when={isDark()}>
           <Show when={context.locale === "en"}>
             <a href={cv().socials.github}>Github</a>
             <div>Twitter</div>

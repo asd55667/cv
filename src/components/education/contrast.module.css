@@ -1,0 +1,66 @@
+@import url(./education.module.css);
+
+.edus {
+  gap: 37px;
+
+  .edu {
+    gap: 5px;
+  }
+
+  .date {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15px;
+    color: rgba(144, 144, 144, 1);
+    order: -1;
+  }
+
+  .major {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15px;
+    color: rgba(255, 255, 255, 1);
+  }
+
+  .school {
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 12px;
+    letter-spacing: -0.02em;
+    color: rgba(201, 201, 201, 1);
+    margin-bottom: 3px;
+  }
+}
+
+
+:global(.dark) .edus {
+  gap: 16px;
+
+  .edu {
+    gap: 4px;
+  }
+
+  .date {
+    color: var(--highlight);
+    font-size: 11px;
+    line-height: 16px;
+    font-weight: 500;
+    order: 0;
+  }
+
+  .major {
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 12px;
+    color: #3a395d;
+  }
+
+  .school {
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    margin-bottom: 0;
+  }
+}

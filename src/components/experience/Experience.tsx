@@ -1,6 +1,7 @@
 import { type JSX, type Component, Show } from "solid-js";
 
-import styles from "./experience.module.css";
+import positive from "./experience.module.css";
+import negative from "./contrast.module.css";
 import { useAppState } from "@/AppContext";
 
 interface IExperience {
@@ -8,16 +9,19 @@ interface IExperience {
   position: string;
   date: string;
   children: JSX.Element;
+  reverse: boolean
 }
 
 export const Experience: Component<IExperience> = (props) => {
   const context = useAppState();
+  const styles = props.reverse ? negative : positive
+  const isDark = () => context.isDark && !props.reverse || !context.isDark && props.reverse
 
   return (
     <div class={styles.expr}>
       <div class={styles.title}>
         {props.title}
-        <Show when={context.isDark && context.locale === "en"}>
+        <Show when={isDark() && context.locale === "en"}>
           <span class={styles.date}>{props.date}</span>
         </Show>
       </div>
@@ -25,7 +29,7 @@ export const Experience: Component<IExperience> = (props) => {
       <div class={styles.row2}>
         <span class={styles.position}>{props.position}</span>
 
-        <Show when={!context.isDark || context.locale === "zh-cn"}>
+        <Show when={!isDark() || context.locale === "zh-cn"}>
           <span class={styles.date}>{props.date}</span>
         </Show>
       </div>

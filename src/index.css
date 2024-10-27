@@ -38,6 +38,7 @@ button {
 
 :root {
   --background: #fff;
+  --background-contrast: #000;
   --highlight: #7051ef;
 
   --page-width: 595px;
@@ -49,6 +50,7 @@ button {
 }
 
 .dark {
+  --background-contrast: #fff;
   --background: #000;
 
   --spotlight-lightness: 100;
@@ -58,12 +60,20 @@ button {
 }
 
 @media (min-width: 768px) {
-  .right {
+  .right[data-reverse="false"] {
     width: 358.04px;
   }
 
+  .right[data-reverse="true"] {
+    width: 250px;
+  }
+
   .dark {
-    .right {
+    .right[data-reverse="true"] {
+      width: 358.04px;
+    }
+
+    .right[data-reverse="false"] {
       width: 250px;
     }
   }
@@ -162,11 +172,9 @@ button {
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(
-      circle at calc(var(--spotlight-x) * 1px) calc(var(--spotlight-y) * 1px),
-      hsl(0 0% var(--spotlight-lightness) / 0.4),
-      transparent 8vmin
-    );
+    background: radial-gradient(circle at calc(var(--spotlight-x) * 1px) calc(var(--spotlight-y) * 1px),
+        hsl(0 0% var(--spotlight-lightness) / 0.4),
+        transparent 8vmin);
     background-attachment: fixed;
     opacity: 0.9;
     transition: opacity 0.2s;
