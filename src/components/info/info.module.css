@@ -60,3 +60,35 @@
     color: rgba(201, 201, 201, 1);
   }
 }
+
+.zh-cn {
+  animation: shrinkAndFade 1s forwards;
+}
+
+.en {
+  animation: growAndFadeIn 1s forwards;
+}
+
+@keyframes shrinkAndFade {
+  0% {
+    width: fit-content;
+    opacity: 1;
+  }
+
+  100% {
+    width: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes growAndFadeIn {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+
+  100% {
+    width: fit-content;
+    opacity: 1;
+  }
+}
