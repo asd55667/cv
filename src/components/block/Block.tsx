@@ -28,7 +28,8 @@ interface ICVBlock {
 }
 export const CVBlock: Component<ICVBlock> = (props) => {
   const context = useAppState();
-  const isDark = () => context.isDark && !props.reverse || !context.isDark && props.reverse
+  const isDark = () =>
+    (context.isDark && !props.reverse) || (!context.isDark && props.reverse);
   const theme = () => (isDark() ? "dark" : "light");
 
   return (

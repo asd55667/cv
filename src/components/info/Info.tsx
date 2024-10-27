@@ -7,7 +7,7 @@ import { useAppState } from "@/AppContext";
 import { cn } from "@/utils";
 
 interface IInfo {
-  reverse: boolean
+  reverse: boolean;
 }
 
 export const Info: Component<IInfo> = (props) => {
@@ -16,8 +16,9 @@ export const Info: Component<IInfo> = (props) => {
 
   let el: HTMLDivElement | undefined;
   const [hideSpan, setHideSpan] = createSignal(false);
-  const styles = props.reverse ? negative : positive
-  const isDark = () => context.isDark && !props.reverse || !context.isDark && props.reverse
+  const styles = props.reverse ? negative : positive;
+  const isDark = () =>
+    (context.isDark && !props.reverse) || (!context.isDark && props.reverse);
 
   createEffect(() => !!context.locale && setHideSpan(false));
 
@@ -25,7 +26,8 @@ export const Info: Component<IInfo> = (props) => {
     cn(styles[context.locale], hideSpan() && "hidden", isDark() && "hidden");
 
   const onAnimationEnd = () => {
-    if (context.locale === "zh-cn" || isDark() && !props.reverse) setHideSpan(true);
+    if (context.locale === "zh-cn" || (isDark() && !props.reverse))
+      setHideSpan(true);
   };
 
   return (

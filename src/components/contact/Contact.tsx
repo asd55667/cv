@@ -7,7 +7,7 @@ import { SvgIcon } from "@/components/svg";
 import { useAppState } from "@/AppContext";
 import { cn } from "@/utils";
 interface IContact {
-  reverse: boolean
+  reverse: boolean;
 }
 export const Contact: Component<IContact> = (props) => {
   const context = useAppState();
@@ -15,8 +15,9 @@ export const Contact: Component<IContact> = (props) => {
   const cv = () => context.cv;
 
   let el: HTMLDivElement | undefined;
-  const styles = props.reverse ? negative : positive
-  const isDark = () => context.isDark && !props.reverse || !context.isDark && props.reverse
+  const styles = props.reverse ? negative : positive;
+  const isDark = () =>
+    (context.isDark && !props.reverse) || (!context.isDark && props.reverse);
 
   return (
     <div class={styles.contact}>
@@ -44,10 +45,7 @@ export const Contact: Component<IContact> = (props) => {
 
       {cv().site && !isDark() && (
         <a class={styles.item} href={cv().site}>
-          <Show
-            when={!isDark()}
-            fallback={<label>{t("home.site")}</label>}
-          >
+          <Show when={!isDark()} fallback={<label>{t("home.site")}</label>}>
             <SvgIcon class={styles.icon} name="site" />
           </Show>
 

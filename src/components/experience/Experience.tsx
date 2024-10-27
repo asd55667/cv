@@ -9,13 +9,14 @@ interface IExperience {
   position: string;
   date: string;
   children: JSX.Element;
-  reverse: boolean
+  reverse: boolean;
 }
 
 export const Experience: Component<IExperience> = (props) => {
   const context = useAppState();
-  const styles = props.reverse ? negative : positive
-  const isDark = () => context.isDark && !props.reverse || !context.isDark && props.reverse
+  const styles = props.reverse ? negative : positive;
+  const isDark = () =>
+    (context.isDark && !props.reverse) || (!context.isDark && props.reverse);
 
   return (
     <div class={styles.expr}>

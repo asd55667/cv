@@ -16,7 +16,7 @@ import { cn } from "@/utils";
 
 interface I {
   class?: string;
-  reverse: boolean
+  reverse: boolean;
 }
 
 export const DefaultLayout: Component<I> = (props) => {
@@ -30,8 +30,9 @@ export const DefaultLayout: Component<I> = (props) => {
     return !context.isDark ? title.toLowerCase() : title;
   };
 
-  const styles = props.reverse ? negative : positive
-  const isDark = () => context.isDark && !props.reverse || !context.isDark && props.reverse
+  const styles = props.reverse ? negative : positive;
+  const isDark = () =>
+    (context.isDark && !props.reverse) || (!context.isDark && props.reverse);
 
   const Intro = () => (
     <CVBlock
@@ -49,7 +50,11 @@ export const DefaultLayout: Component<I> = (props) => {
   return (
     <main
       id="page"
-      class={cn(props.class, styles.page, "pb-10 md:pb-0 h-full md:h-[--page-height]")}
+      class={cn(
+        props.class,
+        styles.page,
+        "pb-10 md:pb-0 h-full md:h-[--page-height]",
+      )}
     >
       <header class="flex md:flex-row items-center justify-between">
         <Info reverse={props.reverse} />
@@ -91,14 +96,20 @@ export const DefaultLayout: Component<I> = (props) => {
             </CVBlock>
           </Show>
 
-          <CVBlock label={t("home.skill").toLowerCase()} reverse={props.reverse}>
+          <CVBlock
+            label={t("home.skill").toLowerCase()}
+            reverse={props.reverse}
+          >
             <div class="flex flex-col justify-center gap-1">
               <For each={cv().skills}>{(skill) => <li>{skill}</li>}</For>
             </div>
           </CVBlock>
         </div>
 
-        <div class={cn(styles.right, "right md:order-0 order--1 md:h-full")} data-reverse={props.reverse}>
+        <div
+          class={cn(styles.right, "right md:order-0 order--1 md:h-full")}
+          data-reverse={props.reverse}
+        >
           <Show when={!isDark()}>
             <Intro />
           </Show>
@@ -126,7 +137,6 @@ export const DefaultLayout: Component<I> = (props) => {
                     title={expr.company}
                     position={expr.position}
                     date={expr.date}
-
                   >
                     {expr.desc}
 

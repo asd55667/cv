@@ -16,7 +16,6 @@
   }
 }
 
-
 :global(.dark) .contact {
   display: flex;
   flex-direction: column;

@@ -8,7 +8,7 @@ import { cn } from "@/utils";
 
 interface ISocial {
   class?: string;
-  reverse: boolean
+  reverse: boolean;
 }
 
 export const Social: Component<ISocial> = (props) => {
@@ -16,8 +16,9 @@ export const Social: Component<ISocial> = (props) => {
   const { t } = context;
   const cv = () => context.cv;
 
-  const styles = props.reverse ? negative : positive
-  const isDark = () => context.isDark && !props.reverse || !context.isDark && props.reverse
+  const styles = props.reverse ? negative : positive;
+  const isDark = () =>
+    (context.isDark && !props.reverse) || (!context.isDark && props.reverse);
 
   const onWechatClick = () => {
     context.spotlight("phone");

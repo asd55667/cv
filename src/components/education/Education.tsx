@@ -8,13 +8,13 @@ import negative from "./contrast.module.css";
 import { useAppState } from "@/AppContext";
 
 interface IEducation {
-  reverse: boolean
+  reverse: boolean;
 }
 
 export const Education: Component<IEducation> = (props) => {
   const context = useAppState();
-  const cv = () => context.cv
-  const styles = props.reverse ? negative : positive
+  const cv = () => context.cv;
+  const styles = props.reverse ? negative : positive;
 
   return (
     <div class={styles.edus}>

@@ -172,9 +172,11 @@ button {
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at calc(var(--spotlight-x) * 1px) calc(var(--spotlight-y) * 1px),
-        hsl(0 0% var(--spotlight-lightness) / 0.4),
-        transparent 8vmin);
+    background: radial-gradient(
+      circle at calc(var(--spotlight-x) * 1px) calc(var(--spotlight-y) * 1px),
+      hsl(0 0% var(--spotlight-lightness) / 0.4),
+      transparent 8vmin
+    );
     background-attachment: fixed;
     opacity: 0.9;
     transition: opacity 0.2s;
