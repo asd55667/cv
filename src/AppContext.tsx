@@ -17,6 +17,7 @@ import { Meta, Title } from "@solidjs/meta";
 import { dict as en_dict } from "../lang/en/en";
 
 import en_light_cv from "../cv/light/en.json";
+import { setCssVariable } from "./utils";
 
 type RawDictionary = typeof en_dict;
 type TypeCV = typeof en_light_cv;
@@ -136,6 +137,7 @@ interface AppState {
   t: i18n.Translator<Dictionary>;
   spotlight(event: SpotlightEvent, timeout?: number): void;
   spot(event: SpotlightEvent, el?: HTMLElement): "" | "spotlight";
+  get spotPos(): [number, number];
   get dir(): "ltr" | "rtl";
   get cv(): TypeCV;
 }
@@ -193,6 +195,7 @@ export const AppContextProvider: ParentComponent = (props) => {
 
   const t = i18n.translator(dict, i18n.resolveTemplate);
 
+  let _spotPos: [number, number] = [0, 0];
   const state: AppState = {
     get isDark() {
       return settings.dark;
@@ -223,17 +226,19 @@ export const AppContextProvider: ParentComponent = (props) => {
           offsetHeight: h,
         } = el;
         // console.log(x, y, w, h, el);
-        document.documentElement.style.setProperty(
-          "--spotlight-x",
-          `${x + w / 2}`,
-        );
-        document.documentElement.style.setProperty(
-          "--spotlight-y",
-          `${y + h / 2}`,
-        );
+        const left =
+          document.documentElement.scrollLeft || document.body.scrollLeft;
+        const top =
+          document.documentElement.scrollTop || document.body.scrollTop;
+        _spotPos = [x + w / 2 - left, y + h / 2 - top];
+        setCssVariable("--spotlight-x", `${_spotPos[0]}`);
+        setCssVariable("--spotlight-y", `${_spotPos[1]}`);
       }
 
       return spotEvent() === event ? "spotlight" : "";
+    },
+    get spotPos() {
+      return _spotPos;
     },
     t,
     get dir() {

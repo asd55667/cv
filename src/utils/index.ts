@@ -152,3 +152,12 @@ export function useEventListener(
     target.removeEventListener(event, listener);
   });
 }
+
+export function getCSSVariable(variableName: string) {
+  const rootStyles = getComputedStyle(document.documentElement);
+  return rootStyles.getPropertyValue(variableName).trim();
+}
+
+export function setCssVariable(variableName: string, val: string) {
+  document.documentElement.style.setProperty(variableName, val);
+}

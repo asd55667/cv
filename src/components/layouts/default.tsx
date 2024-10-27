@@ -46,7 +46,7 @@ export const DefaultLayout: Component = (props) => {
         <Info />
 
         <Show when={!context.isDark}>
-          <Social class={'social hidden md:flex'} />
+          <Social class={"social hidden md:flex"} />
         </Show>
 
         <Show when={context.isDark}>
@@ -136,7 +136,7 @@ export const DefaultLayout: Component = (props) => {
         </div>
 
         <Show when={!context.isDark}>
-          <Social class={'social-m md:hidden flex'} />
+          <Social class={"social-m md:hidden flex"} />
         </Show>
       </div>
     </main>

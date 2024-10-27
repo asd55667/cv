@@ -4,7 +4,13 @@ import { DefaultLayout } from "@/components/layouts/default";
 
 import { useAppState } from "@/AppContext";
 import { CVButton } from "@/components/button/Button";
-import { downloadPdf, downloadImage, cn } from "@/utils/index";
+import {
+  downloadPdf,
+  downloadImage,
+  cn,
+  useEventListener,
+  setCssVariable,
+} from "@/utils/index";
 import { SvgIcon } from "@/components/svg";
 
 const Home: Component = () => {
@@ -48,6 +54,18 @@ const Home: Component = () => {
       <CVButton onClick={download("png")}>{t("global.img")}</CVButton>
     </>
   );
+
+  useEventListener(window, "scroll", onScroll);
+  useEventListener(window, "touchmove", onScroll);
+
+  function onScroll() {
+    const left =
+      document.documentElement.scrollLeft || document.body.scrollLeft;
+    const top = document.documentElement.scrollTop || document.body.scrollTop;
+    const [x, y] = context.spotPos;
+    setCssVariable("--spotlight-x", `${x - left}`);
+    setCssVariable("--spotlight-y", `${y - top}`);
+  }
 
   return (
     <div class="center relative min-w-100vw min-h-100vh gap-2 bg-[--background] md:bg-#e1e1e1 ">
