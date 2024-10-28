@@ -27,7 +27,6 @@ export const Social: Component<ISocial> = (props) => {
   return (
     <div class={cn("flex-col justify-end", props.class)}>
       <div class={styles.id}>@{cv().id}</div>
-      {isDark() && 1123}
 
       <div class={styles.socials}>
         <Show when={!isDark()}>

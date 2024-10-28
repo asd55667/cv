@@ -30,8 +30,8 @@ some might be missing, but the shape should be the same
 */
 type DeepPartial<T> =
   T extends Record<string, unknown>
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
-    : T;
+  ? { [K in keyof T]?: DeepPartial<T[K]> }
+  : T;
 
 const raw_dict_map: Record<
   Locale,
@@ -136,7 +136,9 @@ interface AppState {
   setLocale(value: Locale): void;
   t: i18n.Translator<Dictionary>;
   spotlight(event: SpotlightEvent, timeout?: number): void;
-  spot(event: SpotlightEvent, el?: HTMLElement): "" | "spotlight";
+  spot(event: SpotlightEvent, el?: HTMLElement): "" | "spotlight" | "spotlight-contrast";
+  setReverse(bool: boolean): void;
+  get reverse(): boolean
   get spotPos(): [number, number];
   get dir(): "ltr" | "rtl";
   get cv(): TypeCV;
@@ -195,6 +197,7 @@ export const AppContextProvider: ParentComponent = (props) => {
 
   const t = i18n.translator(dict, i18n.resolveTemplate);
 
+  let reverse = false
   let _spotPos: [number, number] = [0, 0];
   const state: AppState = {
     get isDark() {
@@ -235,7 +238,15 @@ export const AppContextProvider: ParentComponent = (props) => {
         setCssVariable("--spotlight-y", `${_spotPos[1]}`);
       }
 
-      return spotEvent() === event ? "spotlight" : "";
+      return spotEvent() === event
+        ? reverse ? "spotlight-contrast" : "spotlight"
+        : "";
+    },
+    setReverse(bool: boolean) {
+      reverse = bool
+    },
+    get reverse() {
+      return reverse
     },
     get spotPos() {
       return _spotPos;

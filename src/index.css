@@ -47,6 +47,7 @@ button {
   --spotlight-x: 0;
   --spotlight-y: 0;
   --spotlight-lightness: 30;
+  --spotlight-lightness-contrast: 100;
 }
 
 .dark {
@@ -54,6 +55,7 @@ button {
   --background: #000;
 
   --spotlight-lightness: 100;
+  --spotlight-lightness-contrast: 30;
   word-spacing: 0.4rem;
 
   transition: all 1s ease-in-out;
@@ -175,6 +177,23 @@ button {
     background: radial-gradient(
       circle at calc(var(--spotlight-x) * 1px) calc(var(--spotlight-y) * 1px),
       hsl(0 0% var(--spotlight-lightness) / 0.4),
+      transparent 8vmin
+    );
+    background-attachment: fixed;
+    opacity: 0.9;
+    transition: opacity 0.2s;
+    pointer-events: none;
+  }
+}
+
+.spotlight-contrast {
+  &:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at calc(var(--spotlight-x) * 1px) calc(var(--spotlight-y) * 1px),
+      hsl(0 0% var(--spotlight-lightness-contrast) / 0.4),
       transparent 8vmin
     );
     background-attachment: fixed;
