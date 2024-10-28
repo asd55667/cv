@@ -8,3 +8,4 @@
 ## css effect
 
 [spotlight](https://www.youtube.com/watch?v=P_JOdsm_8tY)
+[magic-curtain](https://radix-ui.com)

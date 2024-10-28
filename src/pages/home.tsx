@@ -12,28 +12,38 @@ import {
   setCssVariable,
 } from "@/utils/index";
 import { SvgIcon } from "@/components/svg";
+import * as MagicCurtain from "@/components/magic-curtain/MagicCurtain";
 
 const Home: Component = () => {
   const context = useAppState();
   const { t } = context;
+  const isDark = () =>
+    (context.isDark && !context.reverse) ||
+    (!context.isDark && context.reverse);
   const theme = () =>
-    context.isDark ? t("global.light_mode") : t("global.dark_mode");
+    isDark() ? t("global.light_mode") : t("global.dark_mode");
 
   const [expanded, setExpanded] = createSignal(false);
+  const [themeSwitchDisabled, setThemeSwitchDisabled] = createSignal(false);
 
-  const switchTheme = () => {
-    context.setDark(!context.isDark);
-    setExpanded(!expanded());
+  const switchTheme = (e: MouseEvent) => {
+    if (themeSwitchDisabled()) {
+      e.stopPropagation()
+      e.preventDefault()
+      return
+    }
+    setThemeSwitchDisabled(true)
+    setExpanded(false);
   };
 
   const switchLang = () => {
-    setExpanded(!expanded());
+    setExpanded(false);
     context.setLocale(context.locale === "en" ? "zh-cn" : "en");
   };
 
   const printCV = () => {
     window.print();
-    setExpanded(!expanded());
+    setExpanded(false);
   };
 
   const download = (type: "pdf" | "png") => {
@@ -45,10 +55,17 @@ const Home: Component = () => {
     };
   };
 
+  const onAnimationEnd = (event: AnimationEvent) => {
+    context.setDark(!context.isDark)
+    setThemeSwitchDisabled(false)
+  }
+
   const Buttons = () => (
     <>
       <CVButton onClick={switchLang}>{t("global.lang")}</CVButton>
-      <CVButton onClick={switchTheme}>{theme()}</CVButton>
+      <MagicCurtain.Control onAnimationEnd={onAnimationEnd}>
+        <CVButton onClick={switchTheme} disabled={themeSwitchDisabled()}>{theme()}</CVButton>
+      </MagicCurtain.Control>
       <CVButton onClick={printCV}>{t("global.print")}</CVButton>
       <CVButton onClick={download("pdf")}>{t("global.pdf")}</CVButton>
       <CVButton onClick={download("png")}>{t("global.img")}</CVButton>
@@ -69,33 +86,39 @@ const Home: Component = () => {
 
   return (
     <div class="center relative min-w-100vw min-h-100vh gap-2 bg-[--background] md:bg-#e1e1e1 ">
-      <DefaultLayout reverse={false}></DefaultLayout>
-      <DefaultLayout class="hidden" reverse={true}></DefaultLayout>
+      <MagicCurtain.Root>
+        <MagicCurtain.Item visibility="visible" id="0">
+          <DefaultLayout reverse={false}></DefaultLayout>
+        </MagicCurtain.Item>
+        <MagicCurtain.Item id="1">
+          <DefaultLayout reverse={true}></DefaultLayout>
+        </MagicCurtain.Item>
 
-      <div
-        id="buttons"
-        class="hidden md:flex flex-col gap-4 fixed right-0 top-0 lg:translate-x--100% translate-y-25% h-full"
-      >
-        <Buttons />
-      </div>
-
-      <div class="fixed bottom-15 right-10 md:hidden text-white flex flex-col items-end">
-        <Show when={expanded()}>
-          <div class="flex flex-col gap-4 mb-4">
-            <Buttons />
-          </div>
-        </Show>
-
-        <CVButton
-          class="relative center w-12 h-12 opacity-70 hover:opacity-100"
-          onClick={() => setExpanded(!expanded())}
+        <div
+          id="buttons"
+          class="hidden md:flex flex-col gap-4 fixed right-0 top-0 lg:translate-x--100% translate-y-25% h-full"
         >
-          <SvgIcon
-            class={cn("absolute w-12 h-12", expanded() && "rotate-180")}
-            name="up-arrow"
-          ></SvgIcon>
-        </CVButton>
-      </div>
+          <Buttons />
+        </div>
+
+        <div class="fixed bottom-15 right-10 md:hidden text-white flex flex-col items-end">
+          <Show when={expanded()}>
+            <div class="flex flex-col gap-4 mb-4">
+              <Buttons />
+            </div>
+          </Show>
+
+          <CVButton
+            class="relative center w-12 h-12 opacity-70 hover:opacity-100"
+            onClick={() => setExpanded(!expanded())}
+          >
+            <SvgIcon
+              class={cn("absolute w-12 h-12", expanded() && "rotate-180")}
+              name="up-arrow"
+            ></SvgIcon>
+          </CVButton>
+        </div>
+      </MagicCurtain.Root>
     </div>
   );
 };
