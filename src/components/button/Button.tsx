@@ -28,14 +28,19 @@ interface ICVButton {
   children: JSX.Element;
   onClick: (e: MouseEvent) => void;
   class?: string;
-  disabled?: boolean
+  disabled?: boolean;
 }
 
 export const CVButton: Component<ICVButton> = (props) => {
   const context = useAppState();
   const theme = () => (context.isDark ? "dark" : "light");
   return (
-    <Button class={props.class} theme={theme()} onClick={props.onClick} disabled={props.disabled}>
+    <Button
+      class={props.class}
+      theme={theme()}
+      onClick={props.onClick}
+      disabled={props.disabled}
+    >
       {props.children}
     </Button>
   );

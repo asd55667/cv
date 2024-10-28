@@ -28,11 +28,11 @@ const Home: Component = () => {
 
   const switchTheme = (e: MouseEvent) => {
     if (themeSwitchDisabled()) {
-      e.stopPropagation()
-      e.preventDefault()
-      return
+      e.stopPropagation();
+      e.preventDefault();
+      return;
     }
-    setThemeSwitchDisabled(true)
+    setThemeSwitchDisabled(true);
     setExpanded(false);
   };
 
@@ -56,15 +56,17 @@ const Home: Component = () => {
   };
 
   const onAnimationEnd = (event: AnimationEvent) => {
-    context.setDark(!context.isDark)
-    setThemeSwitchDisabled(false)
-  }
+    context.setDark(!context.isDark);
+    setThemeSwitchDisabled(false);
+  };
 
   const Buttons = () => (
     <>
       <CVButton onClick={switchLang}>{t("global.lang")}</CVButton>
       <MagicCurtain.Control onAnimationEnd={onAnimationEnd}>
-        <CVButton onClick={switchTheme} disabled={themeSwitchDisabled()}>{theme()}</CVButton>
+        <CVButton onClick={switchTheme} disabled={themeSwitchDisabled()}>
+          {theme()}
+        </CVButton>
       </MagicCurtain.Control>
       <CVButton onClick={printCV}>{t("global.print")}</CVButton>
       <CVButton onClick={download("pdf")}>{t("global.pdf")}</CVButton>

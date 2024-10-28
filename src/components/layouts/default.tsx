@@ -33,7 +33,7 @@ export const DefaultLayout: Component<I> = (props) => {
   const styles = props.reverse ? negative : positive;
   const isDark = () =>
     (context.isDark && !props.reverse) || (!context.isDark && props.reverse);
-  context.setReverse(props.reverse)
+  context.setReverse(props.reverse);
 
   const Intro = () => (
     <CVBlock

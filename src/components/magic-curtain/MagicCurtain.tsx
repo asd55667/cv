@@ -71,7 +71,7 @@ interface MagicCurtainItem {
 interface IMagicCurtainItem {
   visibility?: Visibility;
   children?: JSX.Element;
-  id?: string
+  id?: string;
 }
 
 const MagicCurtainItem: Component<IMagicCurtainItem> = (props) => {
@@ -114,9 +114,9 @@ const MagicCurtainControl: Component<IMagicCurtain> = (props) => {
   const [item, setItem] = createSignal<MagicCurtainItem | null>(null);
 
   const updateItem = () => {
-    let newItem = context.items()[1]
+    let newItem = context.items()[1];
     setItem(context.items()[1]);
-  }
+  };
   onMount(updateItem);
 
   const hasAnimatingItem = createMemo(
@@ -140,7 +140,6 @@ const MagicCurtainControl: Component<IMagicCurtain> = (props) => {
         styles["magic-curtain-clip-reverse"],
       ].includes(event.animationName);
       console.log(event.animationName);
-
 
       if (event.target instanceof HTMLElement && isMagicCurtainAnimation) {
         clickedItem?.setVisibility("hidden");
