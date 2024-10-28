@@ -101,7 +101,7 @@ button {
   }
 
   #page {
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     padding-bottom: 0;

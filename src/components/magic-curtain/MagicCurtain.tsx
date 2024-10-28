@@ -13,6 +13,7 @@ import {
 } from "solid-js";
 
 import styles from "./magic-curtain.module.css";
+import { cn } from "@/utils";
 
 interface MagicCurtainState {
   items: Accessor<MagicCurtainItem[]>;
@@ -31,10 +32,6 @@ interface IMagicCurtainItem {
 
 const MagicCurtainRoot: Component<IMagicCurtainItem> = (props) => {
   const [items, setItems] = createSignal<MagicCurtainItem[]>([]);
-  const [controlsPosition, setControlsPosition] = createSignal({
-    left: -9999,
-    top: -9999,
-  });
   const [isFirefox, setIsFirefox] = createSignal(false);
 
   let ref: HTMLDivElement | undefined;
@@ -53,7 +50,7 @@ const MagicCurtainRoot: Component<IMagicCurtainItem> = (props) => {
       <div
         ref={ref}
         data-is-firefox={isFirefox()}
-        class={styles.MagicCurtainRoot}
+        class={cn(styles.MagicCurtainRoot, "center relative min-w-100vw min-h-100vh")}
       >
         {props.children}
       </div>
@@ -71,7 +68,6 @@ interface MagicCurtainItem {
 interface IMagicCurtainItem {
   visibility?: Visibility;
   children?: JSX.Element;
-  id?: string;
 }
 
 const MagicCurtainItem: Component<IMagicCurtainItem> = (props) => {
@@ -92,8 +88,7 @@ const MagicCurtainItem: Component<IMagicCurtainItem> = (props) => {
     <div
       data-visibility={visibility()}
       ref={ref}
-      id={props.id}
-      class={styles.MagicCurtainItem}
+      class={cn(styles.MagicCurtainItem, 'center relative min-w-100vw min-h-100vh')}
       {...props}
     >
       {visibility() === "hidden" ? null : props.children}

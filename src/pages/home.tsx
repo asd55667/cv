@@ -89,10 +89,10 @@ const Home: Component = () => {
   return (
     <div class="center relative min-w-100vw min-h-100vh gap-2 bg-[--background] md:bg-#e1e1e1 ">
       <MagicCurtain.Root>
-        <MagicCurtain.Item visibility="visible" id="0">
+        <MagicCurtain.Item visibility="visible">
           <DefaultLayout reverse={false}></DefaultLayout>
         </MagicCurtain.Item>
-        <MagicCurtain.Item id="1">
+        <MagicCurtain.Item>
           <DefaultLayout reverse={true}></DefaultLayout>
         </MagicCurtain.Item>
 
