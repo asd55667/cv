@@ -50,7 +50,7 @@ export const DefaultLayout: Component<I> = (props) => {
 
   return (
     <main
-      id="page"
+      id={props.reverse ? "page-reverse" : "page"}
       class={cn(
         props.class,
         styles.page,

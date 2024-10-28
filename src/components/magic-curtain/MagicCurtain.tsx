@@ -50,7 +50,10 @@ const MagicCurtainRoot: Component<IMagicCurtainItem> = (props) => {
       <div
         ref={ref}
         data-is-firefox={isFirefox()}
-        class={cn(styles.MagicCurtainRoot, "center relative min-w-100vw min-h-100vh")}
+        class={cn(
+          styles.MagicCurtainRoot,
+          "center relative min-w-100vw min-h-100vh",
+        )}
       >
         {props.children}
       </div>
@@ -88,7 +91,10 @@ const MagicCurtainItem: Component<IMagicCurtainItem> = (props) => {
     <div
       data-visibility={visibility()}
       ref={ref}
-      class={cn(styles.MagicCurtainItem, 'center relative min-w-100vw min-h-100vh')}
+      class={cn(
+        styles.MagicCurtainItem,
+        "center relative min-w-100vw min-h-100vh",
+      )}
       {...props}
     >
       {visibility() === "hidden" ? null : props.children}

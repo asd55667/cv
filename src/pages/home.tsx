@@ -1,4 +1,4 @@
-import { createSignal, Show, type Component } from "solid-js";
+import { createSignal, onMount, Show, type Component } from "solid-js";
 
 import { DefaultLayout } from "@/components/layouts/default";
 
@@ -24,15 +24,15 @@ const Home: Component = () => {
     isDark() ? t("global.light_mode") : t("global.dark_mode");
 
   const [expanded, setExpanded] = createSignal(false);
-  const [themeSwitchDisabled, setThemeSwitchDisabled] = createSignal(false);
+  const [animating, setAnimating] = createSignal(false);
 
   const switchTheme = (e: MouseEvent) => {
-    if (themeSwitchDisabled()) {
+    if (animating()) {
       e.stopPropagation();
       e.preventDefault();
       return;
     }
-    setThemeSwitchDisabled(true);
+    setAnimating(true);
     setExpanded(false);
   };
 
@@ -57,18 +57,29 @@ const Home: Component = () => {
 
   const onAnimationEnd = (event: AnimationEvent) => {
     context.setDark(!context.isDark);
-    setThemeSwitchDisabled(false);
+    setAnimating(false);
   };
+
+  onMount(() => {
+    const onBeforeprint = (e: Event) => {
+      if (animating()) e.preventDefault();
+    };
+
+    window.addEventListener("beforeprint", onBeforeprint);
+    return () => window.removeEventListener("beforeprint", onBeforeprint);
+  });
 
   const Buttons = () => (
     <>
       <CVButton onClick={switchLang}>{t("global.lang")}</CVButton>
       <MagicCurtain.Control onAnimationEnd={onAnimationEnd}>
-        <CVButton onClick={switchTheme} disabled={themeSwitchDisabled()}>
+        <CVButton onClick={switchTheme} disabled={animating()}>
           {theme()}
         </CVButton>
       </MagicCurtain.Control>
-      <CVButton onClick={printCV}>{t("global.print")}</CVButton>
+      <CVButton onClick={printCV} disabled={animating()}>
+        {t("global.print")}
+      </CVButton>
       <CVButton onClick={download("pdf")}>{t("global.pdf")}</CVButton>
       <CVButton onClick={download("png")}>{t("global.img")}</CVButton>
     </>

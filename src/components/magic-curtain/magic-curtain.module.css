@@ -28,7 +28,7 @@
 
 @media (min-width: 1280px) {
   .MagicCurtainItem {
-    --animation-duration: 800ms;
+    --animation-duration: 1s;
   }
 }
 
