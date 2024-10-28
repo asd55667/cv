@@ -20,6 +20,7 @@
 
 .position {
   color: var(--highlight);
+  transition: all 1s ease-in-out;
 }
 
 .line {
@@ -58,6 +59,7 @@
     line-height: 20px;
     letter-spacing: -0.03em;
     color: rgba(201, 201, 201, 1);
+    transition: all 1s ease-in-out;
   }
 }
 

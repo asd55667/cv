@@ -1,4 +1,10 @@
-import { createSignal, onMount, Show, type Component } from "solid-js";
+import {
+  createEffect,
+  createSignal,
+  onMount,
+  Show,
+  type Component,
+} from "solid-js";
 
 import { DefaultLayout } from "@/components/layouts/default";
 
@@ -59,6 +65,8 @@ const Home: Component = () => {
     context.setDark(!context.isDark);
     setAnimating(false);
   };
+
+  createEffect(() => context.setThemeSwitching(animating()));
 
   onMount(() => {
     const onBeforeprint = (e: Event) => {

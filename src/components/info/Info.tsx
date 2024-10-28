@@ -1,4 +1,9 @@
-import { createEffect, createSignal, type Component } from "solid-js";
+import {
+  createEffect,
+  createMemo,
+  createSignal,
+  type Component,
+} from "solid-js";
 
 import positive from "./info.module.css";
 import negative from "./contrast.module.css";
@@ -20,14 +25,22 @@ export const Info: Component<IInfo> = (props) => {
   const isDark = () =>
     (context.isDark && !props.reverse) || (!context.isDark && props.reverse);
 
-  createEffect(() => !!context.locale && setHideSpan(false));
+  createEffect(() => context.locale === "en" && setHideSpan(false));
 
-  const animatedSpanClass = () =>
-    cn(styles[context.locale], hideSpan() && "hidden", isDark() && "hidden");
+  const hidden = createMemo(() => {
+    const rules: boolean[] = [];
+    rules.push(!context.prevLocale && context.locale === "zh-cn");
+    rules.push(!!context.themeSwitching && context.locale !== "en");
+    rules.push(isDark());
+    rules.push(hideSpan());
+    return rules.some(Boolean) && "hidden";
+  });
+
+  const animatedSpanClass = () => cn(styles[context.locale], hidden());
 
   const onAnimationEnd = () => {
-    if (context.locale === "zh-cn" || (isDark() && !props.reverse))
-      setHideSpan(true);
+    if (context.locale === "zh-cn") setHideSpan(true);
+    if (context.locale === "en") setHideSpan(false);
   };
 
   return (

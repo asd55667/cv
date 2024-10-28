@@ -133,6 +133,9 @@ interface AppState {
   get isDark(): boolean;
   setDark(value: boolean): void;
   get locale(): Locale;
+  get prevLocale(): Locale | undefined;
+  get themeSwitching(): Locale | undefined;
+  setThemeSwitching(value: boolean): void;
   setLocale(value: Locale): void;
   t: i18n.Translator<Dictionary>;
   spotlight(event: SpotlightEvent, timeout?: number): void;
@@ -200,6 +203,11 @@ export const AppContextProvider: ParentComponent = (props) => {
 
   const t = i18n.translator(dict, i18n.resolveTemplate);
 
+  const [prevLocale, setPrevLocale] = createSignal<Locale | undefined>();
+  const [themeSwitching, setThemeSwitching] = createSignal<
+    Locale | undefined
+  >();
+
   let reverse = false;
   let _spotPos: [number, number] = [0, 0];
   const state: AppState = {
@@ -212,7 +220,15 @@ export const AppContextProvider: ParentComponent = (props) => {
     get locale() {
       return settings.locale;
     },
+    get prevLocale() {
+      return prevLocale();
+    },
+    get themeSwitching() {
+      return themeSwitching();
+    },
+    setThemeSwitching,
     setLocale(value) {
+      setPrevLocale(this.locale);
       void startTransition(() => {
         set("locale", value);
       });
