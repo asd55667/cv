@@ -115,6 +115,47 @@ export const DefaultLayout: Component<I> = (props) => {
             <Intro />
           </Show>
 
+          <Show when={cv().projects.length}>
+            <CVBlock
+              reverse={props.reverse}
+              label={
+                isDark() ? (
+                  `${t("home.project")}${isEn() ? " " : ""}${t("home.experience")}`
+                ) : (
+                  <div>
+                    {t("home.project").toLowerCase() + (isEn() ? " " : "")}
+                    <span class="highlight">
+                      {t("home.experience").toLowerCase()}
+                    </span>
+                  </div>
+                )
+              }
+            >
+              <div class={styles.exprs}>
+                <For each={cv().projects}>
+                  {(project) => (
+                    <Experience
+                      reverse={props.reverse}
+                      title={project.company}
+                      position={project.position}
+                      date={project.date}
+                    >
+                      {project.desc}
+
+                      <Show when={project?.children?.length}>
+                        <div class={styles.subExpr}>
+                          <For each={project.children}>
+                            {(child) => <li>{child}</li>}
+                          </For>
+                        </div>
+                      </Show>
+                    </Experience>
+                  )}
+                </For>
+              </div>
+            </CVBlock>
+          </Show>
+
           <CVBlock
             reverse={props.reverse}
             label={

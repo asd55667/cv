@@ -1,10 +1,32 @@
 {
+  "projects": [
+    {
+      "company": "Baby Care Tracking System",
+      "position": "Independent Developer",
+      "date": "2026-01 ~ 2026-04",
+      "desc": "Tracking for feeding, sleep, and diaper changes, family collaboration reminders, and multi-format data import/export.",
+      "children": [
+        "Web app built with TypeScript + React + Vite SSR; backend with Hono + tRPC + Better Auth; data layer with Drizzle + PostgreSQL. Key challenges: consistency in a unified event model, permission control for family collaboration, and reliable real-time synchronization for timers and task reminders.",
+        "Built the \"Naike\" WeChat native mini program on Skyline, tackling token refresh, subpackage routing, and complex state synchronization while balancing performance, stability, and maintenance cost."
+      ]
+    },
+    {
+      "company": "Subtitle Editor",
+      "position": "Freelance",
+      "date": "2025-03 ~ 2025-08",
+      "desc": "Built with Next.js + React + TypeScript, featuring multi-format subtitle parsing, timeline synchronization, and IndexedDB persistence.",
+      "children": [
+        "Implemented a WebCodecs player with progressive MP4 range streaming and precise seeking, plus audio-video sync strategies (frame dropping, frame compensation, and delay correction) and a balance between audio quality and low latency under variable playback speeds.",
+        "Built media-kit, a media infrastructure library including time markers, audio waveform, file uploader, edit history, and workspace storage."
+      ]
+    }
+  ],
   "experience": [
     {
       "children": [
-        "Tianjige (Classroom Project Log Monitoring Platform): Customize multi-axis synchronous virtual scrolling for the lag page, and reduce the lag time from 9s to 3s",
-        "1v1Web Teaching Client: Responsible for layout adaptation, custom vite plugin to implement px2em, and WebAudio audio animation",
-        "Teaching PC: old multi-repo project, sub-projects are used in the main project as lib, optimize webpack configuration, upgrade dependencies, access module federation to support hot updates; and add the ability to roll back sub-projects."
+        "Tianjige (Classroom Project Log Monitoring Platform): Customized multi-axis synchronized virtual scrolling for lag-heavy pages, reducing lag time from 9s to 3s.",
+        "1v1 Web Teaching Client: Owned layout adaptation, implemented px2em with a custom Vite plugin, and delivered WebAudio-based audio effects.",
+        "Teaching PC: Maintained a legacy multi-repo architecture where subprojects were consumed as libraries by the main project; optimized webpack config, upgraded dependencies, integrated Module Federation for hot updates, and added subproject rollback support."
       ]
     }
   ]
