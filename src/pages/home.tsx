@@ -91,7 +91,9 @@ const Home: Component = () => {
             <CVButton
               class={cn(
                 context.cvYear === year &&
-                  "ring-2 ring-[--highlight] ring-offset-2 ring-offset-transparent",
+                  (context.isDark
+                    ? "ring-2 ring-[#282828] ring-offset-2 ring-offset-transparent"
+                    : "ring-2 ring-[--highlight] ring-offset-2 ring-offset-transparent"),
               )}
               onClick={() => switchYear(year)}
             >
