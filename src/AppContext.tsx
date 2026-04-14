@@ -103,6 +103,7 @@ function mergeCV<T>(base: T, patch?: DeepPartial<T>): T {
           ? mergeCV(prev, item as DeepPartial<typeof prev>)
           : (item as unknown);
     });
+    merged.length = patch.length;
     return merged as T;
   }
 

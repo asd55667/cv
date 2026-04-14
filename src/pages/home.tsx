@@ -86,7 +86,7 @@ const Home: Component = () => {
   const Buttons = () => (
     <>
       <div class="flex flex-col gap-2">
-        <For each={context.cvYears}>
+        <For each={[...context.cvYears].sort((a, b) => Number(b) - Number(a))}>
           {(year) => (
             <CVButton
               class={cn(

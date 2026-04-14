@@ -1,2 +1,11 @@
 {
+  "experience": [
+    {
+      "children": [
+        "Tianjige (Classroom Project Log Monitoring Platform): Customize multi-axis synchronous virtual scrolling for the lag page, and reduce the lag time from 9s to 3s",
+        "1v1Web Teaching Client: Responsible for layout adaptation, custom vite plugin to implement px2em, and WebAudio audio animation",
+        "Teaching PC: old multi-repo project, sub-projects are used in the main project as lib, optimize webpack configuration, upgrade dependencies, access module federation to support hot updates; and add the ability to roll back sub-projects."
+      ]
+    }
+  ]
 }
