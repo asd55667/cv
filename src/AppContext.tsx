@@ -16,11 +16,11 @@ import { Meta, Title } from "@solidjs/meta";
 // en dictionary is loaded by default
 import { dict as en_dict } from "../lang/en/en";
 
-import en_light_cv from "../cv/light/2026/en.json";
+import en_base_cv from "../cv/shared/base/en.json";
 import { setCssVariable } from "./utils";
 
 type RawDictionary = typeof en_dict;
-type TypeCV = typeof en_light_cv;
+type TypeCV = typeof en_base_cv;
 
 export type Locale = "en" | "zh-cn";
 export const CV_YEARS = ["2024", "2026"] as const;
@@ -32,6 +32,11 @@ for validating of other dictionaries have same keys as en dictionary
 some might be missing, but the shape should be the same
 */
 type DeepPartial<T> =
+  T extends readonly (infer U)[]
+    ? DeepPartial<U>[]
+    : T extends (infer U)[]
+      ? DeepPartial<U>[]
+      :
   T extends Record<string, unknown>
     ? { [K in keyof T]?: DeepPartial<T[K]> }
     : T;
@@ -47,14 +52,24 @@ const raw_dict_map: Record<
 
 type CVTheme = "light" | "dark";
 type CVOption = `${CVTheme}_${Locale}_${CVYear}`;
-type DefaultCVOption = `light_en_${typeof LATEST_CV_YEAR}`;
-type DynamicCVOption = Exclude<CVOption, DefaultCVOption>;
+type ThemeOption = `${CVTheme}_${Locale}`;
+type CVPatch = DeepPartial<TypeCV>;
 
-const cv_map: Record<DynamicCVOption, () => Promise<TypeCV>> = {
+const cv_base_map: Record<Locale, () => Promise<TypeCV>> = {
+  en: () => Promise.resolve(en_base_cv),
+  "zh-cn": () => import("../cv/shared/base/zh-cn.json"),
+};
+
+const cv_theme_map: Partial<Record<ThemeOption, () => Promise<CVPatch>>> = {
+  light_en: () => import("../cv/shared/theme/light/en.json"),
+};
+
+const cv_year_map: Record<CVOption, () => Promise<CVPatch>> = {
   light_en_2024: () => import("../cv/light/2024/en.json"),
   dark_en_2024: () => import("../cv/dark/2024/en.json"),
   "light_zh-cn_2024": () => import("../cv/light/2024/zh-cn.json"),
   "dark_zh-cn_2024": () => import("../cv/dark/2024/zh-cn.json"),
+  light_en_2026: () => import("../cv/light/2026/en.json"),
   dark_en_2026: () => import("../cv/dark/2026/en.json"),
   "light_zh-cn_2026": () => import("../cv/light/2026/zh-cn.json"),
   "dark_zh-cn_2026": () => import("../cv/dark/2026/zh-cn.json"),
@@ -72,12 +87,55 @@ async function fetchDictionary(locale: Locale): Promise<Dictionary> {
   return { ...en_flat_dict, ...flat_dict };
 }
 
+const isRecord = (value: unknown): value is Record<string, unknown> =>
+  !!value && typeof value === "object" && !Array.isArray(value);
+
+function mergeCV<T>(base: T, patch?: DeepPartial<T>): T {
+  if (patch === undefined) return base;
+
+  if (Array.isArray(base) && Array.isArray(patch)) {
+    const merged = [...base] as unknown[];
+    patch.forEach((item, index) => {
+      if (item === undefined) return;
+      const prev = merged[index];
+      merged[index] =
+        isRecord(prev) && isRecord(item)
+          ? mergeCV(prev, item as DeepPartial<typeof prev>)
+          : (item as unknown);
+    });
+    return merged as T;
+  }
+
+  if (isRecord(base) && isRecord(patch)) {
+    const merged: Record<string, unknown> = { ...base };
+    Object.entries(patch).forEach(([key, value]) => {
+      if (value === undefined) return;
+      const prev = merged[key];
+      merged[key] =
+        Array.isArray(prev) && Array.isArray(value)
+          ? mergeCV(prev, value)
+          :
+        isRecord(prev) && isRecord(value)
+          ? mergeCV(prev, value as DeepPartial<typeof prev>)
+          : (value as unknown);
+    });
+    return merged as T;
+  }
+
+  return patch as T;
+}
+
 async function fetchCV(key: CVOption): Promise<TypeCV> {
-  if (key === `light_en_${LATEST_CV_YEAR}`) return en_light_cv;
+  const [theme, locale] = key.split("_") as [CVTheme, Locale, CVYear];
+  const themeKey = `${theme}_${locale}` as ThemeOption;
 
-  const cv = await cv_map[key as DynamicCVOption]();
+  const [baseCV, themePatch, yearPatch] = await Promise.all([
+    cv_base_map[locale](),
+    cv_theme_map[themeKey]?.() ?? Promise.resolve({}),
+    cv_year_map[key](),
+  ]);
 
-  return { ...en_light_cv, ...cv };
+  return mergeCV(mergeCV(baseCV, themePatch), yearPatch);
 }
 
 // Some browsers does not map correctly to some locale code
@@ -203,7 +261,7 @@ export const AppContextProvider: ParentComponent = (props) => {
   });
 
   const [curCV] = createResource(cv_option, fetchCV, {
-    initialValue: en_light_cv,
+    initialValue: en_base_cv,
   });
 
   createEffect(() => {
