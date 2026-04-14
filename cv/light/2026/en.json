@@ -1,0 +1,52 @@
+{
+  "name": "wcw",
+  "position": "FE developer",
+  "id": "wcw",
+  "email": "wcw3440@gmail.com",
+  "phone": "+86 18120587177",
+  "site": "wuchengwei.com",
+  "socials": {
+    "github": "https://github.com/asd55667/cv",
+    "zhihu": "",
+    "xiaohongshu": "",
+    "douyin": ""
+  },
+  "intro": "Proficient in web development related skills, with good programming literacy, good at Vue technology stack, WebRTC application development, automation scripting, like interesting and challenging work, looking forward to finding happiness in programming.",
+  "educations": [
+    {
+      "major": "m.s of Mechatronics Engineering",
+      "school": "Shanghai Institute of Technology",
+      "date": "2018 - 2021"
+    },
+    {
+      "major": "b.s of Communication Engineering",
+      "school": "Wenhua College",
+      "date": "2013 - 2017"
+    }
+  ],
+  "expertise": ["Web Development", "Web Engineering"],
+  "skills": [
+    "Javascript",
+    "Vue/Vite",
+    "Webpack/Rollup",
+    "HTML5/CSS3/SVG",
+    "Shell/Python",
+    "Git"
+  ],
+  "experience": [
+    {
+      "company": "TAL Education Group",
+      "position": "Frontend Developer",
+      "date": "2021 - 2024",
+      "desc": "",
+      "children": [
+        "Tianjige (Classroom Project Log Monitoring Platform): Customize multi-axis synchronous virtual scrolling for the lag page, and reduce the lag time from 9s to 3s",
+        "1v1Web Teaching Client: Responsible for layout adaptation, custom vite plugin to implement px2em, and WebAudio audio animation",
+        "Teaching PC: old multi-repo project, sub-projects are used in the main project as lib, optimize webpack configuration, upgrade dependencies, access module federation to support hot updates; and add the ability to roll back sub-projects.",
+        "Enterprise training C-side: common component development (recursive cascade filters, etc.), front-end learning progress calculation",
+        "Students' PC: In addition to the daily development iteration, take this project as the learning background, start the project from scratch, integrate various accessories of modern front-end development, and write code syntax conversion tools for this purpose, migrate the original business logic, and write VSCode plug-ins to improve efficiency.",
+        "Courseware Editor: canvas avatar cropper, web video editor, include features such as text, stickers, effects, filters, gl-transitions"
+      ]
+    }
+  ]
+}

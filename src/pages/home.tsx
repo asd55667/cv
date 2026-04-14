@@ -1,6 +1,7 @@
 import {
   createEffect,
   createSignal,
+  For,
   onMount,
   Show,
   type Component,
@@ -47,6 +48,11 @@ const Home: Component = () => {
     context.setLocale(context.locale === "en" ? "zh-cn" : "en");
   };
 
+  const switchYear = (year: typeof context.cvYear) => {
+    setExpanded(false);
+    context.setCVYear(year);
+  };
+
   const printCV = () => {
     window.print();
     setExpanded(false);
@@ -54,7 +60,7 @@ const Home: Component = () => {
 
   const download = (type: "pdf" | "png") => {
     return () => {
-      const filename = `${context.cv.name}-${context.locale === "en" ? "cv" : "简历"}`;
+      const filename = `${context.cv.name}-${context.cvYear}-${context.locale === "en" ? "cv" : "简历"}`;
       if (type === "pdf") downloadPdf(filename);
       if (type === "png") downloadImage("png", filename + ".png");
       setExpanded(!expanded());
@@ -79,6 +85,21 @@ const Home: Component = () => {
 
   const Buttons = () => (
     <>
+      <div class="flex flex-col gap-2">
+        <For each={context.cvYears}>
+          {(year) => (
+            <CVButton
+              class={cn(
+                context.cvYear === year &&
+                  "ring-2 ring-[--highlight] ring-offset-2 ring-offset-transparent",
+              )}
+              onClick={() => switchYear(year)}
+            >
+              {year}
+            </CVButton>
+          )}
+        </For>
+      </div>
       <CVButton onClick={switchLang}>{t("global.lang")}</CVButton>
       <MagicCurtain.Control onAnimationEnd={onAnimationEnd}>
         <CVButton onClick={switchTheme} disabled={animating()}>

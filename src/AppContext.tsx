@@ -16,13 +16,16 @@ import { Meta, Title } from "@solidjs/meta";
 // en dictionary is loaded by default
 import { dict as en_dict } from "../lang/en/en";
 
-import en_light_cv from "../cv/light/en.json";
+import en_light_cv from "../cv/light/2026/en.json";
 import { setCssVariable } from "./utils";
 
 type RawDictionary = typeof en_dict;
 type TypeCV = typeof en_light_cv;
 
 export type Locale = "en" | "zh-cn";
+export const CV_YEARS = ["2024", "2026"] as const;
+export type CVYear = (typeof CV_YEARS)[number];
+const LATEST_CV_YEAR: CVYear = CV_YEARS[CV_YEARS.length - 1];
 
 /*
 for validating of other dictionaries have same keys as en dictionary
@@ -42,13 +45,19 @@ const raw_dict_map: Record<
   "zh-cn": () => import("../lang/zh-cn/zh-cn"),
 };
 
-type CVOption = `light_${Locale}` | `dark_${Locale}`;
+type CVTheme = "light" | "dark";
+type CVOption = `${CVTheme}_${Locale}_${CVYear}`;
+type DefaultCVOption = `light_en_${typeof LATEST_CV_YEAR}`;
+type DynamicCVOption = Exclude<CVOption, DefaultCVOption>;
 
-const cv_map: Record<CVOption, () => Promise<TypeCV>> = {
-  light_en: () => import("../cv/light/en.json"),
-  dark_en: () => import("../cv/dark/en.json"),
-  "light_zh-cn": () => import("../cv/light/zh-cn.json"),
-  "dark_zh-cn": () => import("../cv/dark/zh-cn.json"),
+const cv_map: Record<DynamicCVOption, () => Promise<TypeCV>> = {
+  light_en_2024: () => import("../cv/light/2024/en.json"),
+  dark_en_2024: () => import("../cv/dark/2024/en.json"),
+  "light_zh-cn_2024": () => import("../cv/light/2024/zh-cn.json"),
+  "dark_zh-cn_2024": () => import("../cv/dark/2024/zh-cn.json"),
+  dark_en_2026: () => import("../cv/dark/2026/en.json"),
+  "light_zh-cn_2026": () => import("../cv/light/2026/zh-cn.json"),
+  "dark_zh-cn_2026": () => import("../cv/dark/2026/zh-cn.json"),
 };
 
 export type Dictionary = i18n.Flatten<RawDictionary>;
@@ -64,9 +73,9 @@ async function fetchDictionary(locale: Locale): Promise<Dictionary> {
 }
 
 async function fetchCV(key: CVOption): Promise<TypeCV> {
-  if (key === "light_en") return en_light_cv;
+  if (key === `light_en_${LATEST_CV_YEAR}`) return en_light_cv;
 
-  const cv = await cv_map[key]();
+  const cv = await cv_map[key as DynamicCVOption]();
 
   return { ...en_light_cv, ...cv };
 }
@@ -85,9 +94,16 @@ const toLocale = (string: string): Locale | undefined =>
       ? (LANG_ALIASES[string] as Locale)
       : undefined;
 
+const toCVYear = (value: unknown): CVYear | undefined =>
+  typeof value === "string" &&
+  CV_YEARS.includes(value as CVYear)
+    ? (value as CVYear)
+    : undefined;
+
 interface Settings {
   locale: Locale;
   dark: boolean;
+  year: CVYear;
 }
 
 function initialLocale(location: Location): Locale {
@@ -109,6 +125,7 @@ function initialSettings(location: Location): Settings {
   return {
     locale: initialLocale(location),
     dark: window.matchMedia("(prefers-color-scheme: dark)").matches,
+    year: LATEST_CV_YEAR,
   };
 }
 
@@ -126,6 +143,7 @@ function deserializeSettings(value: string, location: Location): Settings {
       "dark" in parsed && typeof parsed.dark === "boolean"
         ? parsed.dark
         : false,
+    year: ("year" in parsed && toCVYear(parsed.year)) || LATEST_CV_YEAR,
   };
 }
 type SpotlightEvent = "phone" | "";
@@ -133,6 +151,9 @@ interface AppState {
   get isDark(): boolean;
   setDark(value: boolean): void;
   get locale(): Locale;
+  get cvYear(): CVYear;
+  get cvYears(): readonly CVYear[];
+  setCVYear(value: CVYear): void;
   get prevLocale(): Locale | undefined;
   get themeSwitching(): Locale | undefined;
   setThemeSwitching(value: boolean): void;
@@ -174,7 +195,7 @@ export const AppContextProvider: ParentComponent = (props) => {
 
   const cv_option = (): CVOption => {
     const theme = settings.dark ? "dark" : "light";
-    return `${theme}_${locale()}`;
+    return `${theme}_${locale()}_${settings.year}`;
   };
 
   const [dict] = createResource(locale, fetchDictionary, {
@@ -219,6 +240,15 @@ export const AppContextProvider: ParentComponent = (props) => {
     },
     get locale() {
       return settings.locale;
+    },
+    get cvYear() {
+      return settings.year;
+    },
+    get cvYears() {
+      return CV_YEARS;
+    },
+    setCVYear(value) {
+      set("year", value);
     },
     get prevLocale() {
       return prevLocale();
