@@ -40,7 +40,7 @@ export const DefaultLayout: Component<I> = (props) => {
       reverse={props.reverse}
       label={
         isDark()
-          ? `${t("home.about")}${isEn() ? " " : ""}${cv().name}`
+          ? `${t("home.about")}${isEn() ? " " : ""}${'我'}`
           : t("home.intro")
       }
     >
@@ -51,6 +51,7 @@ export const DefaultLayout: Component<I> = (props) => {
   return (
     <main
       id={props.reverse ? "page-reverse" : "page"}
+      data-cv-year={context.cvYear}
       class={cn(
         props.class,
         styles.page,

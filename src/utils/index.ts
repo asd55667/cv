@@ -37,6 +37,11 @@ async function generateImage(): Promise<HTMLCanvasElement> {
         // reset zoom
         (cv.parentNode as HTMLElement).style.zoom = "1";
 
+        // hide social section only during export captures
+        clonedDoc.querySelectorAll('[data-social="true"]').forEach((item) => {
+          (item as HTMLElement).style.display = "none";
+        });
+
         // repaint avatar
         const avatar = clonedDoc.querySelector("#avatar") as HTMLDivElement;
         if (!avatar) return;

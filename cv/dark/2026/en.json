@@ -1,32 +1,32 @@
 {
   "projects": [
     {
-      "company": "Baby Care Tracking System",
+      "company": "BabyLog",
       "position": "Independent Developer",
       "date": "2026-01 ~ 2026-04",
-      "desc": "Tracking for feeding, sleep, and diaper changes, family collaboration reminders, and multi-format data import/export.",
+      "desc": "Tracking for feeding, sleep, and diaper changes, family collaboration reminders, and data import/export.",
       "children": [
-        "Web app built with TypeScript + React + Vite SSR; backend with Hono + tRPC + Better Auth; data layer with Drizzle + PostgreSQL. Key challenges: consistency in a unified event model, permission control for family collaboration, and reliable real-time synchronization for timers and task reminders.",
-        "Built the \"Naike\" WeChat native mini program on Skyline, tackling token refresh, subpackage routing, and complex state synchronization while balancing performance, stability, and maintenance cost."
+        "Web app built with React,ViteSSR; backend with Hono,tRPC;data layer with Drizzle,PostgreSQL",
+        "\"Naike\" WeChat native mini program on Skyline, tackling token refresh, subpackage routing, and complex state synchronization"
       ]
     },
     {
       "company": "Subtitle Editor",
       "position": "Freelance",
       "date": "2025-03 ~ 2025-08",
-      "desc": "Built with Next.js + React + TypeScript, featuring multi-format subtitle parsing, timeline synchronization, and IndexedDB persistence.",
+      "desc": "Built with Next.js, featuring multi-format subtitle parsing, timeline synchronization",
       "children": [
-        "Implemented a WebCodecs player with progressive MP4 range streaming and precise seeking, plus audio-video sync strategies (frame dropping, frame compensation, and delay correction) and a balance between audio quality and low latency under variable playback speeds.",
-        "Built media-kit, a media infrastructure library including time markers, audio waveform, file uploader, edit history, and workspace storage."
+        "wc-player, player with precise seeking, plus audio-video sync strategies",
+        "media-kit, a media infrastructure library including time markers"
       ]
     }
   ],
   "experience": [
     {
       "children": [
-        "Tianjige (Classroom Project Log Monitoring Platform): Customized multi-axis synchronized virtual scrolling for lag-heavy pages, reducing lag time from 9s to 3s.",
-        "1v1 Web Teaching Client: Owned layout adaptation, implemented px2em with a custom Vite plugin, and delivered WebAudio-based audio effects.",
-        "Teaching PC: Maintained a legacy multi-repo architecture where subprojects were consumed as libraries by the main project; optimized webpack config, upgraded dependencies, integrated Module Federation for hot updates, and added subproject rollback support."
+        "Tianjige (Classroom Project Log Monitoring Platform): Customized multi-axis synchronized virtual scrolling for lag-heavy pages",
+        "1v1 Web Teaching Client: Owned layout adaptation, implemented px2em with a custom Vite plugin",
+        "Teaching PC: Maintained a legacy multi-repo architecture where subprojects were consumed as libraries by the main project"
       ]
     }
   ]

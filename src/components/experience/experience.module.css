@@ -6,8 +6,15 @@
 }
 
 .row2 {
-  margin-top: 12.7px;
-  margin-bottom: 8px;
+  margin-top: 6px;
+  margin-bottom: 3px;
+}
+
+.expr[data-cv-year="2024"] {
+  .row2 {
+    margin-top: 12.7px;
+    margin-bottom: 8px;
+  }
 }
 
 .position {
@@ -29,7 +36,7 @@
 :global(.dark) .expr {
   font-size: 10px;
   font-weight: 400;
-  line-height: 16px;
+  line-height: 14px;
   letter-spacing: -0.02em;
   text-align: left;
   color: rgba(201, 201, 201, 1);
@@ -42,8 +49,8 @@
   }
 
   .row2 {
-    margin-top: 8px;
-    margin-bottom: 7px;
+    margin-top: 5px;
+    margin-bottom: 3px;
   }
 
   .position {
@@ -63,5 +70,14 @@
     line-height: 12px;
     text-align: left;
     color: rgba(144, 144, 144, 1);
+  }
+}
+
+:global(.dark) .expr[data-cv-year="2024"] {
+  line-height: 16px;
+
+  .row2 {
+    margin-top: 8px;
+    margin-bottom: 7px;
   }
 }

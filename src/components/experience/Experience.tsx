@@ -19,7 +19,7 @@ export const Experience: Component<IExperience> = (props) => {
     (context.isDark && !props.reverse) || (!context.isDark && props.reverse);
 
   return (
-    <div class={styles.expr}>
+    <div class={styles.expr} data-cv-year={context.cvYear}>
       <div class={styles.title}>
         {props.title}
         <Show when={isDark() && context.locale === "en"}>

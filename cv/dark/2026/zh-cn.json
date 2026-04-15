@@ -1,23 +1,23 @@
 {
   "projects": [
     {
-      "company": "婴儿照护记录系统",
-      "position": "独立开发",
+      "company": "BabyLog",
+      "position": "Agents监工",
       "date": "2026-01 ~ 2026-04",
-      "desc": "喂养睡眠排泄追踪、家庭协作提醒及多格式数据导入导出",
+      "desc": "喂养睡眠排泄追踪、家庭协作提醒及数据导入导出",
       "children": [
-        "Web端TypeScript + React + Vite SSR，后端采用 Hono + tRPC + Better Auth，数据层为 Drizzle + PostgreSQL；技术难点：统一事件模型的数据一致性、家庭协作权限控制、计时与任务提醒的实时同步可靠性",
-        "‘奶刻’ 微信原生小程序; 以Skyline小程序为核心，重点攻克鉴权续期、分包路由与复杂状态同步，兼顾性能、稳定和维护成本;"
+        "Web端 React,ViteSSR搭配Hono,tRPC;数据层为Drizzle,PostgreSQL",
+        "奶刻 微信原生小程序;以Skyline小程序为核心,重点攻克鉴权续期、分包路由与复杂状态同步"
       ]
     },
     {
       "company": "字幕编辑器",
       "position": "自由职业",
-      "date": "2025-03 ～ 2025-08",
-      "desc": "基于Next.js+React+TS，多格式字幕解析、时间轴同步和IndexedDB持久化",
+      "date": "2025-03 ~ 2025-08",
+      "desc": "基于Next.js+React+TS,多格式字幕解析、时间轴同步",
       "children": [
-        "WebCodecs Player, MP4 渐进式 Range 拉流与精准 seek、音画同步（丢帧/补帧/延时）策略、倍速播放下音质与低延迟平衡",
-        "media-kit, 媒体基础设施库, time markers, audio wave, file uploader, edit history, workspace storage"
+        "wc-layer, 精准seek、音画同步(丢帧/补帧/延时）策略、倍速播放下音质与低延迟平衡",
+        "media-kit, 媒体基础设施库, time markers, audio wave, edit history, persistence"
       ]
     }
   ],
