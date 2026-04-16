@@ -40,7 +40,7 @@ export const DefaultLayout: Component<I> = (props) => {
       reverse={props.reverse}
       label={
         isDark()
-          ? `${t("home.about")}${isEn() ? " " : ""}${'我'}`
+          ? `${t("home.about")}${isEn() ? " " : ""}${cv().name}`
           : t("home.intro")
       }
     >
